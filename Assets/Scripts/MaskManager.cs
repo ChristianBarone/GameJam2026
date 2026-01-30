@@ -14,6 +14,8 @@ public class MaskManager : MonoBehaviour
 
     const float MASK_TIME = 5.0f;
 
+    private Camera cam;
+
     int masksOn;
 
     void Awake()
@@ -23,6 +25,8 @@ public class MaskManager : MonoBehaviour
 
     void Start()
     {
+        cam = Camera.main;
+
         rMaskOn = false;
         gMaskOn = false;
         bMaskOn = false;
@@ -40,8 +44,11 @@ public class MaskManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G)) { WearOrTakeOffMask(ref gMaskOn); }
         if (Input.GetKeyDown(KeyCode.B)) { WearOrTakeOffMask(ref bMaskOn); }
 
+        Color32 bgColor = new Color32(0,0,0,255);
+
         if (rMaskOn)
         {
+            bgColor.r = 255;
             rTimer -= Time.deltaTime;
             // BAR UPDATE
             if (rTimer <= 0) TakeOffMask(ref rMaskOn);
@@ -50,6 +57,7 @@ public class MaskManager : MonoBehaviour
 
         if (gMaskOn)
         {
+            bgColor.g = 255;
             gTimer -= Time.deltaTime;
             // BAR UPDATE
             if (gTimer <= 0) TakeOffMask(ref gMaskOn);
@@ -58,11 +66,14 @@ public class MaskManager : MonoBehaviour
 
         if (bMaskOn)
         {
+            bgColor.b = 255;
             bTimer -= Time.deltaTime;
             // BAR UPDATE
             if (bTimer <= 0) TakeOffMask(ref bMaskOn);
         }
         else { bTimer = Mathf.Min(bTimer + Time.deltaTime, MASK_TIME); }
+
+        cam.backgroundColor = Color.Lerp(cam.backgroundColor, bgColor, 25.0f * Time.deltaTime);
     }
 
     void TakeOffMask(ref bool maskOn)
