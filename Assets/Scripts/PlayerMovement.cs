@@ -29,10 +29,20 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = new Vector3(h, v, 0) * speed * Time.deltaTime;
         transform.position += movement;
 
+        /*
         transform.position = new Vector3(
             Mathf.Clamp(transform.position.x, minX, maxX),
             Mathf.Clamp(transform.position.y, minY, maxY),
             transform.position.z
         );
+        */
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        RGBElement e = col.GetComponent<RGBElement>();
+        if (e == null) return;
+
+        if (e.KillsPlayer()) Debug.Log("You are dead!");
     }
 }

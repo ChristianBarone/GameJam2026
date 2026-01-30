@@ -22,6 +22,11 @@ public class RGBElement : MonoBehaviour
         ChangeColor();
     }
 
+    public bool KillsPlayer()
+    {
+        return sprRenderer.color.a != 0;
+    }
+
     void ChangeColor()
     {
         Color32 c = new Color32(0, 0, 0, 255);

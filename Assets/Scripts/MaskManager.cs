@@ -12,6 +12,8 @@ public class MaskManager : MonoBehaviour
     public float gTimer;
     public float bTimer;
 
+    const float MASK_TIME = 5.0f;
+
     int masksOn;
 
     void Awake()
@@ -25,9 +27,9 @@ public class MaskManager : MonoBehaviour
         gMaskOn = false;
         bMaskOn = false;
 
-        rTimer = 100;
-        gTimer = 100;
-        bTimer = 100;
+        rTimer = MASK_TIME;
+        gTimer = MASK_TIME;
+        bTimer = MASK_TIME;
 
         masksOn = 0;
     }
@@ -40,27 +42,27 @@ public class MaskManager : MonoBehaviour
 
         if (rMaskOn)
         {
-            rTimer--;
+            rTimer -= Time.deltaTime;
             // BAR UPDATE
             if (rTimer <= 0) TakeOffMask(ref rMaskOn);
         }
-        else { rTimer = Mathf.Min(rTimer + 1.0f, 100.0f); }
+        else { rTimer = Mathf.Min(rTimer + Time.deltaTime, MASK_TIME); }
 
         if (gMaskOn)
         {
-            gTimer--;
+            gTimer -= Time.deltaTime;
             // BAR UPDATE
             if (gTimer <= 0) TakeOffMask(ref gMaskOn);
         }
-        else { gTimer = Mathf.Min(gTimer + 1.0f, 100.0f); }
+        else { gTimer = Mathf.Min(gTimer + Time.deltaTime, MASK_TIME); }
 
         if (bMaskOn)
         {
-            bTimer--;
+            bTimer -= Time.deltaTime;
             // BAR UPDATE
             if (bTimer <= 0) TakeOffMask(ref bMaskOn);
         }
-        else { bTimer = Mathf.Min(bTimer + 1.0f, 100.0f); }
+        else { bTimer = Mathf.Min(bTimer + Time.deltaTime, MASK_TIME); }
     }
 
     void TakeOffMask(ref bool maskOn)
