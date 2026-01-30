@@ -29,6 +29,7 @@ public class RGBElement : MonoBehaviour
         if (g && !maskManager.gMaskOn) c.g = 255;
         if (b && !maskManager.bMaskOn) c.b = 255;
 
+        if (c.r == 0 && c.g == 0 && c.b == 0) c.a = 0;
         sprRenderer.color = c;
     }
 
