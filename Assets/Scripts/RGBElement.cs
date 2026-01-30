@@ -6,11 +6,15 @@ public class RGBElement : MonoBehaviour
     public bool g;
     public bool b;
 
-    private SpriteRenderer sprRenderer;
+    SpriteRenderer sprRenderer;
+
+    MaskManager maskManager;
 
     void Start()
     {
         sprRenderer = GetComponent<SpriteRenderer>();
+
+        maskManager = MaskManager.instance;
     }
 
     void Update()
@@ -21,9 +25,9 @@ public class RGBElement : MonoBehaviour
     void ChangeColor()
     {
         Color32 c = new Color32(0, 0, 0, 255);
-        if (r) c.r = 255;
-        if (g) c.g = 255;
-        if (b) c.b = 255;
+        if (r && !maskManager.rMaskOn) c.r = 255;
+        if (g && !maskManager.gMaskOn) c.g = 255;
+        if (b && !maskManager.bMaskOn) c.b = 255;
 
         sprRenderer.color = c;
     }
