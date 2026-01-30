@@ -12,6 +12,6 @@ public class AutoScrollCamera : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.right * scrollSpeed * Time.deltaTime);
+        transform.Translate(Vector3.up * scrollSpeed * Time.deltaTime);
     }
 }
