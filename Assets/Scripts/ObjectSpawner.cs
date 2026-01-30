@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
     void Spawn()
     {
         Vector3 spawnPos = cam.ViewportToWorldPoint(
-            new Vector3(1.1f, Random.Range(0.1f, 0.9f), 0)
+            new Vector3(Random.Range(0.1f, 0.9f), 1.1f, 0)
         );
 
         spawnPos.z = 0;
@@ -59,6 +59,9 @@ public class Spawner : MonoBehaviour
 
             sr.color = c;
         }
+
+        float scale = 10.0f;
+        obj.transform.localScale = new Vector3(scale, scale, scale);
     }
 
     void recalcSpawnrate() {
