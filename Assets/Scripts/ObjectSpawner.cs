@@ -60,7 +60,7 @@ public class Spawner : MonoBehaviour
             sr.color = c;
         }
 
-        float scale = 10.0f;
+        float scale = 4.0f;
         obj.transform.localScale = new Vector3(scale, scale, scale);
     }
 
