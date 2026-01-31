@@ -43,24 +43,30 @@ public class Spawner : MonoBehaviour
         );
 
 
+        Color c;
+        do
+        {
+            c = new Color(
+                Random.Range(0, 2),
+                Random.Range(0, 2),
+                Random.Range(0, 2)
+            );
+        }
+        while (c == Color.black);
+
         SpriteRenderer sr = obj.GetComponent<SpriteRenderer>();
         if (sr != null)
         {
-            Color c;
-            do
-            {
-                c = new Color(
-                    Random.Range(0, 2),
-                    Random.Range(0, 2),
-                    Random.Range(0, 2)
-                );
-            }
-            while (c == Color.black);
-
             sr.color = c;
         }
 
-        float scale = 4.0f;
+        SpriteRenderer[] sprs = obj.GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer srchld in sprs)
+        {
+            srchld.color = c;
+        }
+
+        float scale = 1.0f;
         obj.transform.localScale = new Vector3(scale, scale, scale);
     }
 
