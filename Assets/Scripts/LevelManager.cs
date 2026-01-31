@@ -9,9 +9,7 @@ public class LevelManager : MonoBehaviour
     public AutoScrollCamera camController;
     public Transform playerTransform;
 
-    public Button RestartButton;
-    public Button MainMenuButton;
-    public Image GameOverImage;
+    public GameObject gameOverPanel;
     public TextMeshProUGUI EndScreenScore;
 
     public int currentLevel = 0;
@@ -52,10 +50,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        RestartButton.gameObject.SetActive(false);
-        MainMenuButton.gameObject.SetActive(false);
-        GameOverImage.gameObject.SetActive(false);
-        EndScreenScore.gameObject.SetActive(false);
+        gameOverPanel.SetActive(false);
 
         cam = Camera.main;
         audioManager = AudioManager.instance;
@@ -105,12 +100,9 @@ public class LevelManager : MonoBehaviour
 
             audioManager.PlayDeathSound();
 
-            RestartButton.gameObject.SetActive(true);
-            MainMenuButton.gameObject.SetActive(true);
-            GameOverImage.gameObject.SetActive(true);
-
+            gameOverPanel.SetActive(true);
+            gameOverPanel.GetComponent<Animator>().SetTrigger("Effect");
             EndScreenScore.text = "Your score: " + totalPoints;
-            EndScreenScore.gameObject.SetActive(true);
         }
         else
         {
