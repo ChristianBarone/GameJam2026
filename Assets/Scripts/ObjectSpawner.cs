@@ -42,7 +42,6 @@ public class Spawner : MonoBehaviour
             Quaternion.Euler(0, 0, rotationZ)
         );
 
-
         RGBElement rgb = obj.GetComponent<RGBElement>();
         if (rgb != null)
         {
