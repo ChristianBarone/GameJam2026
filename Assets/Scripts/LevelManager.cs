@@ -97,25 +97,33 @@ public class LevelManager : MonoBehaviour
         int addedPoints = 100 * points * (currentLevel + 1);
         totalPoints += addedPoints;
 
+        bool leveledUp = CheckLvlUp();
+
         GameObject GO = Instantiate(scoreTextEffect, camController.transform);
         GO.transform.position = playerTransform.position + Vector3.right * 0.5f;
 
         TextMeshPro text = GO.GetComponentInChildren<TextMeshPro>();
         text.text = "+" + addedPoints.ToString();
 
+        if (leveledUp) text.text += " LVL UP!";
+
         Destroy(GO, 1);
     }
 
-    public void CheckLvlUp() {
-        currentPoints += 1;
-        if (currentPoints == pointsToLevelUp)
+    bool CheckLvlUp() 
+    {
+        if (currentPoints >= pointsToLevelUp)
         {
             currentPoints = 0;
             ++currentLevel;
 
             if (life < 3 && life > 0) ++life;
             pointsToLevelUp += 3;
+
+            return true;
         }
+
+        return false;
     }
     
     void RefreshScore() {

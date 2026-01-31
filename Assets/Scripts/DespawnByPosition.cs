@@ -15,8 +15,6 @@ public class DespawnByPosition : MonoBehaviour
         if (transform.position.y < bottomLimit)
         {
             Destroy(gameObject);
-            LevelManager levelManager = LevelManager.instance;
-            if (levelManager != null) levelManager.CheckLvlUp();
         }
 
     }
