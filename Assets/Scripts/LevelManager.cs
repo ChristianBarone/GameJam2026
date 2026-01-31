@@ -82,9 +82,10 @@ public class LevelManager : MonoBehaviour
         if (life <= 0) Debug.Log("Game Over!");
     }
 
-    public void AddPoints(int points)
+    public void AddPoints(int points, float pos)
     {
-        totalPoints += 100* points * (currentLevel + 1);
+        totalPoints += 100 * points * (currentLevel + 1);
+        Debug.Log(pos);
 
     }
 
