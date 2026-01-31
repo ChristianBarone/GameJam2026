@@ -60,7 +60,7 @@ public class Spawner : MonoBehaviour
             rgb.SetColor(r, g, b);
         }
         
-        float scale = 1.0f;
+        float scale = 0.5f;
         obj.transform.localScale = new Vector3(scale, scale, scale);
     }
 
