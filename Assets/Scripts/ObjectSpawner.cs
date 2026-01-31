@@ -64,6 +64,8 @@ public class Spawner : MonoBehaviour
     }
 
     void recalcSpawnrate() {
-        spawnRate = Random.Range(2.0f, 4.0f);
+        if (LevelManager.instance != null) {
+            spawnRate = Random.Range(1.0f, 2.0f);
+        }
     }
 }
