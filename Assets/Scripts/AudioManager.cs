@@ -5,7 +5,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     public AudioClip[] hurtSounds;
-    public AudioClip deathSound;
+    public AudioClip deathSoundYesRecord;
+    public AudioClip deathSoundNoRecord;
 
     public AudioClip lowLifeAlertSound;
 
@@ -42,11 +43,18 @@ public class AudioManager : MonoBehaviour
         audioS.PlayOneShot(hurtSounds[Random.Range(1, hurtSounds.Length)]);
     }
 
-    public void PlayDeathSound()
+    public void PlayDeathSoundYesRecord()
     {
         audioS.Stop();
         playingHeartbeat = false;
-        audioS.PlayOneShot(deathSound);
+        audioS.PlayOneShot(deathSoundYesRecord);
+    }    
+    
+    public void PlayDeathSoundNoRecord()
+    {
+        audioS.Stop();
+        playingHeartbeat = false;
+        audioS.PlayOneShot(deathSoundNoRecord);
     }
 
     public void PlayLowLifeAlertSound()

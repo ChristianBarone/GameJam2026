@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
 
     public GameObject gameOverPanel;
     public TextMeshProUGUI EndScreenScore;
+    public TextMeshProUGUI EndScreenHighscore;
 
     public int currentLevel = 0;
     public int currentPointsBeforeNextLevel = 0;
@@ -35,6 +36,7 @@ public class LevelManager : MonoBehaviour
     public GameObject scoreTextEffect;
 
     public Animator hurtPanelAnim;
+    public Animator gameplayPanelAnim;
 
     Camera cam;
     AudioManager audioManager;
@@ -98,13 +100,18 @@ public class LevelManager : MonoBehaviour
 
             camController.AddScreenShake(5.1f);
 
-            audioManager.PlayDeathSound();
-
             hurtPanelAnim.SetTrigger("Dead");
+            gameplayPanelAnim.SetTrigger("Dead");
 
             gameOverPanel.SetActive(true);
             gameOverPanel.GetComponent<Animator>().SetTrigger("Effect");
-            EndScreenScore.text = "Your score: " + totalPoints;
+            gameOverPanel.GetComponent<Animator>().SetBool("Record", totalPoints > highscore);
+
+            if (totalPoints > highscore) audioManager.PlayDeathSoundYesRecord();
+            else audioManager.PlayDeathSoundNoRecord();
+
+            EndScreenScore.text = totalPoints.ToString();
+            EndScreenHighscore.text = highscore.ToString();
         }
         else
         {
