@@ -37,6 +37,8 @@ public class LevelManager : MonoBehaviour
 
     Camera cam;
 
+    AudioManager audioManager;
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -54,6 +56,7 @@ public class LevelManager : MonoBehaviour
         GameOverImage.gameObject.SetActive(false);
 
         cam = Camera.main;
+        audioManager = AudioManager.instance;
 
         currentLevel = 0;
         currentPointsBeforeNextLevel = 0;
@@ -94,12 +97,20 @@ public class LevelManager : MonoBehaviour
         camController.AddScreenShake(0.5f);
 
         --life;
-        if (life <= 0) {
+        if (life <= 0)
+        {
             Time.timeScale = 0f;
+
+            audioManager.PlayDeathSound();
 
             RestartButton.gameObject.SetActive(true);
             MainMenuButton.gameObject.SetActive(true);
             GameOverImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            audioManager.PlayHurtSound();
+            if (life == 1) audioManager.PlayLowLifeAlertSound();
         }
     }
 
@@ -111,6 +122,8 @@ public class LevelManager : MonoBehaviour
         int addedPoints = 100 * points * (currentLevel + 1);
         totalPoints += addedPoints;
         currentPointsBeforeNextLevel += addedPoints;
+
+        audioManager.PlayGetPointSound();
 
         bool lvlUp = CheckLvlUp();
         if (lvlUp) CreateScoreTextEffect("+" + addedPoints.ToString() + " (LVL UP!)");
