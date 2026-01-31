@@ -7779,7 +7779,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0381351a1dae462439466c104d3d6bc3, type: 3}
   - {fileID: 8300000, guid: 1c97ee8605d2cc244b3e022e82c8e6fb, type: 3}
   - {fileID: 8300000, guid: 0fdf5455a4a3c574cbd7fd8d45e202b0, type: 3}
-  deathSound: {fileID: 8300000, guid: 68dd699c35b523f45b3ea79844e1102a, type: 3}
+  deathSound: {fileID: 8300000, guid: 545af700b1bd9ab45a440e50711686e9, type: 3}
   lowLifeAlertSound: {fileID: 8300000, guid: 1e04e3a5ed1a7664a96b6cb0b448c346, type: 3}
   pointSounds:
   - {fileID: 8300000, guid: 11204953c00cb2a41a5294ab619acb4e, type: 3}
@@ -7787,6 +7787,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1d48a4dc28551764aad096dcb56389c2, type: 3}
   - {fileID: 8300000, guid: ea1d7c43f42022b45b2cb90e81966fd7, type: 3}
   - {fileID: 8300000, guid: bee1c792bbd56c3448e4681aac5e1a12, type: 3}
+  levelUpSound: {fileID: 8300000, guid: c4ec4c9b8d5e2d741b3b84db4688403c, type: 3}
   audioS: {fileID: 1560305834}
   heartbeatAudioS: {fileID: 1560305837}
 --- !u!82 &1560305837

@@ -126,7 +126,7 @@ public class LevelManager : MonoBehaviour
         audioManager.PlayGetPointSound();
 
         bool lvlUp = CheckLvlUp();
-        if (lvlUp) CreateScoreTextEffect("+" + addedPoints.ToString() + " (LVL UP!)");
+        if (lvlUp) { audioManager.PlayLevelUpSound(); CreateScoreTextEffect("+" + addedPoints.ToString() + " (LVL UP!)"); }
         else CreateScoreTextEffect("+" + addedPoints.ToString());
     }
 
@@ -157,7 +157,8 @@ public class LevelManager : MonoBehaviour
         return false;
     }
     
-    void RefreshScore() {
+    void RefreshScore() 
+    {
         scoreText.text = totalPoints.ToString() + " (LVL " + currentLevel.ToString() + ")";
     }
 }

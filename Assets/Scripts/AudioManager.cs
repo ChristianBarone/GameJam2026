@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip[] pointSounds;
 
+    public AudioClip levelUpSound;
+
     public AudioSource audioS;
     public AudioSource heartbeatAudioS;
 
@@ -53,5 +55,11 @@ public class AudioManager : MonoBehaviour
     public void PlayGetPointSound()
     {
         audioS.PlayOneShot(pointSounds[Random.Range(1, pointSounds.Length)]);
+    }
+
+    public void PlayLevelUpSound()
+    {
+        audioS.PlayOneShot(levelUpSound);
+        playingHeartbeat = false;
     }
 }
