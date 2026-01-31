@@ -4,10 +4,13 @@ public class AutoScrollCamera : MonoBehaviour
 {
     public float scrollSpeed = 2f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Transform camChild;
+
+    float camShakeTime = 0;
+
     void Start()
     {
-        
+        camShakeTime = 0;
     }
 
     void Update()
@@ -17,8 +20,11 @@ public class AutoScrollCamera : MonoBehaviour
             float speed = scrollSpeed + 0.4f * LevelManager.instance.currentLevel;
             if (speed > 10.0f) speed = 10.0f;
             transform.Translate(Vector3.up * speed * Time.deltaTime);
+        }
 
+        if (camShakeTime > 0)
+        {
+            camChild.eulerAngles = new Vector3(0, 0, Random.Range(-5.0f, 5.0f));
         }
     }
-
 }
