@@ -4,21 +4,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
 
-    float minX, maxX, minY, maxY;
+    Vector3 movement;
 
+    Rigidbody2D rb2D;
     void Start()
     {
-        Camera cam = Camera.main;
-
-        Vector3 bottomLeft = cam.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        Vector3 topRight = cam.ViewportToWorldPoint(new Vector3(1, 1, 0));
-
-        float padding = 0.5f;
-
-        minX = bottomLeft.x + padding;
-        maxX = topRight.x - padding;
-        minY = bottomLeft.y + padding;
-        maxY = topRight.y - padding;
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -26,16 +17,12 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(h, v, 0) * speed * Time.deltaTime;
-        transform.position += movement;
+        movement = new Vector3(h, v, 0) * speed;
+    }
 
-        /*
-        transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, minX, maxX),
-            Mathf.Clamp(transform.position.y, minY, maxY),
-            transform.position.z
-        );
-        */
+    void FixedUpdate()
+    {
+        rb2D.velocity = movement * Time.fixedDeltaTime;
     }
 
     void OnTriggerStay2D(Collider2D col)
