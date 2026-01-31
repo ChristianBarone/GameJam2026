@@ -59,14 +59,14 @@ public class MaskManager : MonoBehaviour
     void Update()
     {
         /*
-        if (Input.GetKeyDown(KeyCode.R)) { WearOrTakeOffMask(ref rMaskOn); }
-        if (Input.GetKeyDown(KeyCode.G)) { WearOrTakeOffMask(ref gMaskOn); }
-        if (Input.GetKeyDown(KeyCode.B)) { WearOrTakeOffMask(ref bMaskOn); }
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { WearOrTakeOffMask(ref rMaskOn); }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) { WearOrTakeOffMask(ref gMaskOn); }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) { WearOrTakeOffMask(ref bMaskOn); }
         */
 
-        if (Input.GetKey(KeyCode.R) && !rMaskCharging) WearMask(ref rMaskOn); else TakeOffMask(ref rMaskOn);
-        if (Input.GetKey(KeyCode.G) && !gMaskCharging) WearMask(ref gMaskOn); else TakeOffMask(ref gMaskOn);
-        if (Input.GetKey(KeyCode.B) && !bMaskCharging) WearMask(ref bMaskOn); else TakeOffMask(ref bMaskOn);
+        if (Input.GetKey(KeyCode.Alpha1) && !rMaskCharging) WearMask(ref rMaskOn); else TakeOffMask(ref rMaskOn);
+        if (Input.GetKey(KeyCode.Alpha2) && !gMaskCharging) WearMask(ref gMaskOn); else TakeOffMask(ref gMaskOn);
+        if (Input.GetKey(KeyCode.Alpha3) && !bMaskCharging) WearMask(ref bMaskOn); else TakeOffMask(ref bMaskOn);
 
         Color32 bgColor = new Color32(0, 0, 0, 255);
 

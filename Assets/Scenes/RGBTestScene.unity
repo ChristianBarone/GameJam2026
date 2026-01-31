@@ -2141,7 +2141,7 @@ GameObject:
   - component: {fileID: 495632886}
   - component: {fileID: 495632885}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: TextB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2186,7 +2186,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[B]'
+  m_text: '[3]: Blue mask'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2213,15 +2213,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2537,7 +2537,7 @@ GameObject:
   - component: {fileID: 553508779}
   - component: {fileID: 553508778}
   m_Layer: 5
-  m_Name: Image
+  m_Name: MaskR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2560,7 +2560,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 785.48, y: 187}
-  m_SizeDelta: {x: 140.642, y: 150.619}
+  m_SizeDelta: {x: 130, y: 150.619}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &553508778
 MonoBehaviour:
@@ -2582,7 +2582,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5a049288435f40e41a8cc514d972838e, type: 3}
+  m_Sprite: {fileID: -3620058081308502462, guid: f6fc99067b803044891f9816a39026c7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2876,7 +2876,7 @@ GameObject:
   - component: {fileID: 590287267}
   - component: {fileID: 590287266}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TextR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2921,7 +2921,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[R]'
+  m_text: '[1]: Red mask'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2948,15 +2948,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3087,7 +3087,7 @@ GameObject:
   - component: {fileID: 675901214}
   - component: {fileID: 675901213}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: MaskB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3110,7 +3110,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 788.8, y: -114.52}
-  m_SizeDelta: {x: 134, y: 134.956}
+  m_SizeDelta: {x: 100, y: 134.956}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &675901213
 MonoBehaviour:
@@ -3132,7 +3132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85f1f32421287ab4ebfb1a91ba381844, type: 3}
+  m_Sprite: {fileID: 7417105662279941552, guid: 3fa0a798121c7f04da9b200cd8bf9398, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6778,7 +6778,7 @@ GameObject:
   - component: {fileID: 1497499275}
   - component: {fileID: 1497499274}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: TextG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6823,7 +6823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[G]'
+  m_text: '[2]: Green mask'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6850,15 +6850,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6888,7 +6888,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -39.75244, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8435,7 +8435,7 @@ GameObject:
   - component: {fileID: 1910522493}
   - component: {fileID: 1910522492}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: MaskG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8458,7 +8458,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 788.8, y: 37}
-  m_SizeDelta: {x: 136.814, y: 128}
+  m_SizeDelta: {x: 136.814, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1910522492
 MonoBehaviour:
@@ -8480,7 +8480,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 62327e86b563d9546b27048beb2fdf5d, type: 3}
+  m_Sprite: {fileID: 577037920664377198, guid: 960669d5a306d8c4098793d72f463f0e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
