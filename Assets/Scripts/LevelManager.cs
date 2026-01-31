@@ -63,7 +63,7 @@ public class LevelManager : MonoBehaviour
 
         if (timer >= scorePassiveInc)
         {
-            totalPoints += 10;
+            totalPoints += 3;
             RefreshScore();
             timer = 0;
         }        
