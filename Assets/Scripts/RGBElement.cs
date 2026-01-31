@@ -11,9 +11,12 @@ public class RGBElement : MonoBehaviour
 
     MaskManager maskManager;
 
+    bool interactedWithPlayer;
+
     void Start()
     {
         maskManager = MaskManager.instance;
+        interactedWithPlayer = false;
     }
 
     void Update()
@@ -24,6 +27,27 @@ public class RGBElement : MonoBehaviour
     public bool KillsPlayer()
     {
         return sprRendererers[0].color.a != 0;
+    }
+
+    public bool HasInteractedWithPlayer()
+    {
+        return interactedWithPlayer;
+    }
+
+    public void InteractWithPlayer()
+    {
+        interactedWithPlayer = true;
+    }
+
+    public int PointsToGive()
+    {
+        int points = 0;
+
+        if (r) ++points;
+        if (g) ++points;
+        if (b) ++points;
+
+        return points;
     }
 
     void ChangeColor()

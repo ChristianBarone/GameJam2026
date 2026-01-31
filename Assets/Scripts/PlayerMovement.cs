@@ -30,6 +30,18 @@ public class PlayerMovement : MonoBehaviour
         RGBElement e = col.GetComponent<RGBElement>();
         if (e == null) return;
 
-        if (e.KillsPlayer()) Debug.Log("You are dead!");
+        if (e.HasInteractedWithPlayer()) return;
+        e.InteractWithPlayer();
+
+        LevelManager levelManager = LevelManager.instance;
+
+        if (e.KillsPlayer())
+        {
+            if (levelManager != null) levelManager.TakeDamage();
+        }
+        else
+        {
+            if (levelManager != null) levelManager.AddPoints(e.PointsToGive());
+        }
     }
 }
