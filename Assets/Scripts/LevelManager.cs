@@ -6,6 +6,8 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
+    public AutoScrollCamera camController;
+
     public int currentLevel = 0;
     public int currentPoints = 0;
     public int totalPoints = 0;
@@ -63,6 +65,8 @@ public class LevelManager : MonoBehaviour
         if (invincibilityFrames > 0) return;
 
         invincibilityFrames = 3;
+
+        camController.AddScreenShake(0.5f);
 
         --life;
         if (life <= 0) Debug.Log("Game Over!");

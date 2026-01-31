@@ -24,7 +24,15 @@ public class AutoScrollCamera : MonoBehaviour
 
         if (camShakeTime > 0)
         {
-            camChild.eulerAngles = new Vector3(0, 0, Random.Range(-5.0f, 5.0f));
+            float shakeAmount = Mathf.Min(camShakeTime, 1.0f);
+            camChild.eulerAngles = new Vector3(0, 0, Random.Range(-5.0f, 5.0f) * shakeAmount);
+
+            camShakeTime -= Time.deltaTime;
         }
+    }
+
+    public void AddScreenShake(float time)
+    {
+        camShakeTime = Mathf.Max(camShakeTime, time);
     }
 }

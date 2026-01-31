@@ -5995,6 +5995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b473cfe6e3818f488662658f5168221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camController: {fileID: 229980316}
   currentLevel: 0
   currentPoints: 0
   totalPoints: 0
