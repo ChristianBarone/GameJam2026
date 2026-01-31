@@ -7,7 +7,13 @@ public class MaskManager : MonoBehaviour
 
     public bool rMaskOn;
     public bool gMaskOn;
-    public bool bMaskOn;    
+    public bool bMaskOn;
+
+    public SpriteRenderer playerMaskSprite001;
+    public SpriteRenderer playerMaskSprite002;
+    public Sprite maskRSprite;
+    public Sprite maskGSprite;
+    public Sprite maskBSprite;
     
     public bool rMaskCharging;
     public bool gMaskCharging;
@@ -62,7 +68,7 @@ public class MaskManager : MonoBehaviour
         if (Input.GetKey(KeyCode.G) && !gMaskCharging) WearMask(ref gMaskOn); else TakeOffMask(ref gMaskOn);
         if (Input.GetKey(KeyCode.B) && !bMaskCharging) WearMask(ref bMaskOn); else TakeOffMask(ref bMaskOn);
 
-        Color32 bgColor = new Color32(0,0,0,255);
+        Color32 bgColor = new Color32(0, 0, 0, 255);
 
         if (rMaskOn)
         {
@@ -70,8 +76,8 @@ public class MaskManager : MonoBehaviour
             rTimer -= Time.deltaTime;
             if (rTimer <= 0) { TakeOffMask(ref rMaskOn); rMaskCharging = true; }
         }
-        else 
-        { 
+        else
+        {
             rTimer = Mathf.Min(rTimer + Time.deltaTime, MASK_TIME);
             if (rTimer == MASK_TIME) rMaskCharging = false;
         }
@@ -82,8 +88,8 @@ public class MaskManager : MonoBehaviour
             gTimer -= Time.deltaTime;
             if (gTimer <= 0) { TakeOffMask(ref gMaskOn); gMaskCharging = true; }
         }
-        else 
-        { 
+        else
+        {
             gTimer = Mathf.Min(gTimer + Time.deltaTime, MASK_TIME);
             if (gTimer == MASK_TIME) gMaskCharging = false;
         }
@@ -94,10 +100,34 @@ public class MaskManager : MonoBehaviour
             bTimer -= Time.deltaTime;
             if (bTimer <= 0) { TakeOffMask(ref bMaskOn); bMaskCharging = true; }
         }
-        else 
-        { 
+        else
+        {
             bTimer = Mathf.Min(bTimer + Time.deltaTime, MASK_TIME);
             if (bTimer == MASK_TIME) bMaskCharging = false;
+        }
+
+        if (masksOn == 0) { playerMaskSprite001.enabled = false; playerMaskSprite002.enabled = false; }
+        else if (masksOn == 1)
+        {
+            playerMaskSprite001.enabled = true;
+            playerMaskSprite002.enabled = false;
+
+            playerMaskSprite001.transform.localPosition = new Vector3(0f, .2f, 0);
+            playerMaskSprite001.transform.localEulerAngles = new Vector3(0, 0, 0.0f);
+
+            playerMaskSprite001.sprite = (rMaskOn) ? maskRSprite : ((gMaskOn) ? maskGSprite : maskBSprite);
+        }
+        else
+        {
+            playerMaskSprite001.enabled = true;
+            playerMaskSprite002.enabled = true;
+
+            playerMaskSprite001.transform.localPosition = new Vector3(-0.3f, .2f, 0);
+            playerMaskSprite001.transform.localEulerAngles = new Vector3(0, 0, 20.0f);
+
+            if (!rMaskOn) { playerMaskSprite001.sprite = maskGSprite; playerMaskSprite002.sprite = maskBSprite; }
+            else if (!gMaskOn) { playerMaskSprite001.sprite = maskRSprite; playerMaskSprite002.sprite = maskBSprite; }
+            else if (!bMaskOn) { playerMaskSprite001.sprite = maskRSprite; playerMaskSprite002.sprite = maskGSprite; }
         }
 
         rSlider.value = (rTimer / MASK_TIME);

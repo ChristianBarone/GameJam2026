@@ -6,6 +6,8 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
+    public AutoScrollCamera camController;
+
     public int currentLevel = 0;
     public int currentPoints = 0;
     public int totalPoints = 0;
@@ -15,6 +17,9 @@ public class LevelManager : MonoBehaviour
 
     public int life;
     float invincibilityFrames;
+
+    float timer;
+    float scorePassiveInc = 0.05f;
 
     public Image lifeImage3;
     public Image lifeImage2;
@@ -47,7 +52,14 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        scoreText.text = totalPoints.ToString() + " (LVL " + currentLevel.ToString() + ")";
+        timer += Time.deltaTime;
+
+        if (timer >= scorePassiveInc)
+        {
+            totalPoints += 10;
+            RefreshScore();
+            timer = 0;
+        }        
         highscoreText.text = highscore.ToString();
 
         if (invincibilityFrames < 0) invincibilityFrames -= Time.deltaTime;
@@ -64,23 +76,31 @@ public class LevelManager : MonoBehaviour
 
         invincibilityFrames = 3;
 
+        camController.AddScreenShake(0.5f);
+
         --life;
         if (life <= 0) Debug.Log("Game Over!");
     }
 
     public void AddPoints(int points)
     {
-        currentPoints += points * (currentLevel + 1);
-        totalPoints += points * (currentLevel + 1);
+        totalPoints += 100* points * (currentLevel + 1);
+
+    }
+
+    public void CheckLvlUp() {
+        currentPoints += 1;
         if (currentPoints == pointsToLevelUp)
         {
             currentPoints = 0;
             ++currentLevel;
 
-            pointsToLevelUp += 10;
-
             if (life < 3 && life > 0) ++life;
             pointsToLevelUp += 3;
         }
+    }
+    
+    void RefreshScore() {
+        scoreText.text = totalPoints.ToString() + " (LVL " + currentLevel.ToString() + ")";
     }
 }

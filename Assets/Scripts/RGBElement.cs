@@ -29,7 +29,7 @@ public class RGBElement : MonoBehaviour
 
         if (interactedWithPlayer)
         {
-            scale -= Time.deltaTime;
+            scale -= Time.deltaTime * 2;
             if (scale < 0) scale = 0;
             transform.localScale = Vector3.one * scale;
         }
