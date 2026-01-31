@@ -6,14 +6,13 @@ public class RGBElement : MonoBehaviour
     public bool g;
     public bool b;
 
-    SpriteRenderer[] sprRendererers;
+    public SpriteRenderer[] sprRendererers;
+    public SpriteRenderer sprOutline;
 
     MaskManager maskManager;
 
     void Start()
     {
-        sprRendererers = GetComponentsInChildren<SpriteRenderer>();
-
         maskManager = MaskManager.instance;
     }
 
@@ -47,5 +46,12 @@ public class RGBElement : MonoBehaviour
         r = _r;
         g = _g;
         b = _b;
+
+        Color32 c = new Color32(0, 0, 0, 255);
+        if (r) c.r = 255;
+        if (g) c.g = 255;
+        if (b) c.b = 255;
+
+        sprOutline.color = c;
     }
 }
