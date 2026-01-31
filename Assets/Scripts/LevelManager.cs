@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public Button RestartButton;
     public Button MainMenuButton;
     public Image GameOverImage;
+    public TextMeshProUGUI EndScreenScore;
 
     public int currentLevel = 0;
     public int currentPointsBeforeNextLevel = 0;
@@ -54,6 +55,7 @@ public class LevelManager : MonoBehaviour
         RestartButton.gameObject.SetActive(false);
         MainMenuButton.gameObject.SetActive(false);
         GameOverImage.gameObject.SetActive(false);
+        EndScreenScore.gameObject.SetActive(false);
 
         cam = Camera.main;
         audioManager = AudioManager.instance;
@@ -106,6 +108,9 @@ public class LevelManager : MonoBehaviour
             RestartButton.gameObject.SetActive(true);
             MainMenuButton.gameObject.SetActive(true);
             GameOverImage.gameObject.SetActive(true);
+
+            EndScreenScore.text = "Your score: " + totalPoints;
+            EndScreenScore.gameObject.SetActive(true);
         }
         else
         {
