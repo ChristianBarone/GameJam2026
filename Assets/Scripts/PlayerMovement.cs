@@ -6,9 +6,13 @@ public class PlayerMovement : MonoBehaviour
 
     float minX, maxX, minY, maxY;
 
+    Vector3 movement;
+
+    Rigidbody2D rb2D;
     void Start()
     {
         Camera cam = Camera.main;
+        rb2D = GetComponent<Rigidbody2D>();
 
         Vector3 bottomLeft = cam.ViewportToWorldPoint(new Vector3(0, 0, 0));
         Vector3 topRight = cam.ViewportToWorldPoint(new Vector3(1, 1, 0));
@@ -26,8 +30,7 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(h, v, 0) * speed * Time.deltaTime;
-        transform.position += movement;
+        movement = new Vector3(h, v, 0) * speed;
 
         /*
         transform.position = new Vector3(
@@ -36,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
             transform.position.z
         );
         */
+    }
+
+    void FixedUpdate()
+    {
+        rb2D.velocity = movement * Time.fixedDeltaTime;
     }
 
     void OnTriggerStay2D(Collider2D col)
