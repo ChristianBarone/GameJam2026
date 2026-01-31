@@ -18,10 +18,13 @@ public class MaskManager : MonoBehaviour
     public float bTimer;
 
     public Slider rSlider;
+    public Image rSliderBar;
     public Slider gSlider;
+    public Image gSliderBar;
     public Slider bSlider;
+    public Image bSliderBar;
 
-    const float MASK_TIME = 5.0f;
+    const float MASK_TIME = 3.0f;
 
     private Camera cam;
 
@@ -100,6 +103,10 @@ public class MaskManager : MonoBehaviour
         rSlider.value = (rTimer / MASK_TIME);
         gSlider.value = (gTimer / MASK_TIME);
         bSlider.value = (bTimer / MASK_TIME);
+
+        rSliderBar.color = (!rMaskCharging) ? new Color32(255,0,0,255) : new Color32(70, 0, 0, 255);
+        gSliderBar.color = (!gMaskCharging) ? new Color32(0,255, 0,255) : new Color32(0, 70, 0, 255);
+        bSliderBar.color = (!bMaskCharging) ? new Color32(0,0,255,255) : new Color32(0, 0, 70, 255);
 
         cam.backgroundColor = Color.Lerp(cam.backgroundColor, bgColor, 25.0f * Time.deltaTime);
     }
