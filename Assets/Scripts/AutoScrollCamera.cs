@@ -12,8 +12,6 @@ public class AutoScrollCamera : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(LevelManager.instance);
-
         if (LevelManager.instance != null)
         {
             float speed = scrollSpeed + LevelManager.instance.currentLevel;
