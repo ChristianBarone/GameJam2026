@@ -35,7 +35,6 @@ public class LevelManager : MonoBehaviour
     public GameObject scoreTextEffect;
 
     Camera cam;
-
     AudioManager audioManager;
 
     void Awake()

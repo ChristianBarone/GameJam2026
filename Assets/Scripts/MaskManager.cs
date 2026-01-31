@@ -32,7 +32,8 @@ public class MaskManager : MonoBehaviour
 
     const float MASK_TIME = 3.0f;
 
-    private Camera cam;
+    Camera cam;
+    AudioManager audioManager;
 
     int masksOn;
 
@@ -44,6 +45,7 @@ public class MaskManager : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
+        audioManager = AudioManager.instance;
 
         rMaskOn = false;
         gMaskOn = false;
@@ -147,6 +149,8 @@ public class MaskManager : MonoBehaviour
 
         maskOn = false;
         --masksOn;
+
+        audioManager.PlayMaskPutOffSound();
     }
 
     void WearMask(ref bool maskOn)
@@ -156,6 +160,8 @@ public class MaskManager : MonoBehaviour
         if (masksOn >= 2) return;
         maskOn = true;
         ++masksOn;
+
+        audioManager.PlayMaskPutOnSound();
     }
 
     void WearOrTakeOffMask(ref bool maskOn)

@@ -13,6 +13,9 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip levelUpSound;
 
+    public AudioClip[] putOnMaskSounds;
+    public AudioClip[] putOffMaskSounds;
+
     public AudioSource audioS;
     public AudioSource heartbeatAudioS;
 
@@ -61,5 +64,15 @@ public class AudioManager : MonoBehaviour
     {
         audioS.PlayOneShot(levelUpSound);
         playingHeartbeat = false;
+    }
+
+    public void PlayMaskPutOnSound()
+    {
+        audioS.PlayOneShot(putOnMaskSounds[Random.Range(1, putOnMaskSounds.Length)]);
+    }
+
+    public void PlayMaskPutOffSound()
+    {
+        audioS.PlayOneShot(putOffMaskSounds[Random.Range(1, putOffMaskSounds.Length)]);
     }
 }
