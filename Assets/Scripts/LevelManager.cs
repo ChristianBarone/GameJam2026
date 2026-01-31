@@ -9,6 +9,10 @@ public class LevelManager : MonoBehaviour
     public AutoScrollCamera camController;
     public Transform playerTransform;
 
+    public Button RestartButton;
+    public Button MainMenuButton;
+    public Image GameOverImage;
+
     public int currentLevel = 0;
     public int currentPointsBeforeNextLevel = 0;
     public int totalPoints = 0;
@@ -43,11 +47,14 @@ public class LevelManager : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
     {
+        RestartButton.gameObject.SetActive(false);
+        MainMenuButton.gameObject.SetActive(false);
+        GameOverImage.gameObject.SetActive(false);
+
         cam = Camera.main;
         audioManager = AudioManager.instance;
 
@@ -92,7 +99,13 @@ public class LevelManager : MonoBehaviour
         --life;
         if (life <= 0)
         {
+            Time.timeScale = 0f;
+
             audioManager.PlayDeathSound();
+
+            RestartButton.gameObject.SetActive(true);
+            MainMenuButton.gameObject.SetActive(true);
+            GameOverImage.gameObject.SetActive(true);
         }
         else
         {
