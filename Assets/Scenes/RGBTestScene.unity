@@ -3694,7 +3694,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 376, y: -348}
+  m_AnchoredPosition: {x: 346, y: -348}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &758684111
@@ -3856,7 +3856,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 111, y: -348}
+  m_AnchoredPosition: {x: 141, y: -348}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &791138105
@@ -6088,6 +6088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camController: {fileID: 229980316}
+  playerTransform: {fileID: 1531646830}
   currentLevel: 0
   currentPoints: 0
   totalPoints: 0
@@ -6099,6 +6100,7 @@ MonoBehaviour:
   lifeImage1: {fileID: 791138105}
   highscoreText: {fileID: 1233408546}
   scoreText: {fileID: 118528376}
+  scoreTextEffect: {fileID: 517847072390563174, guid: 28026b63c3d031d40a06bfb5fa82cd70, type: 3}
 --- !u!1 &1298707469
 GameObject:
   m_ObjectHideFlags: 0

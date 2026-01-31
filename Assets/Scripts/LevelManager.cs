@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
 
     public AutoScrollCamera camController;
+    public Transform playerTransform;
 
     public int currentLevel = 0;
     public int currentPoints = 0;
@@ -28,6 +29,10 @@ public class LevelManager : MonoBehaviour
     public TextMeshProUGUI highscoreText;
     public TextMeshProUGUI scoreText;
 
+    public GameObject scoreTextEffect;
+
+    Camera cam;
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -41,6 +46,8 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        cam = Camera.main;
+
         currentLevel = 0;
         currentPoints = 0;
         totalPoints = 0;
@@ -82,11 +89,21 @@ public class LevelManager : MonoBehaviour
         if (life <= 0) Debug.Log("Game Over!");
     }
 
-    public void AddPoints(int points, float pos)
+    public void AddPoints(int points, Vector2 pos)
     {
-        totalPoints += 100 * points * (currentLevel + 1);
-        Debug.Log(pos);
+        float y = cam.WorldToScreenPoint(pos).y;
+        Debug.Log(y);
 
+        int addedPoints = 100 * points * (currentLevel + 1);
+        totalPoints += addedPoints;
+
+        GameObject GO = Instantiate(scoreTextEffect, camController.transform);
+        GO.transform.position = playerTransform.position + Vector3.right * 0.5f;
+
+        TextMeshPro text = GO.GetComponentInChildren<TextMeshPro>();
+        text.text = "+" + addedPoints.ToString();
+
+        Destroy(GO, 1);
     }
 
     public void CheckLvlUp() {
