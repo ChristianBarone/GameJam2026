@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2d8ef5562dddda644a746354bf2f0ea8
+guid: def497cefd8e0234fa8a4236956643ee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2539671753022486885
-    second: Block_Squiggly_0
+      213: -5668205078480983056
+    second: BlackGradient_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Block_Squiggly_0
+      name: BlackGradient_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 239
-        height: 358
+        width: 718
+        height: 717
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 569bffce00abe3320800000000000000
-      internalID: 2539671753022486885
+      spriteID: 0fb6317338d7651b0800000000000000
+      internalID: -5668205078480983056
       vertices: []
       indices: 
       edges: []
@@ -133,7 +133,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Block_Squiggly_0: 2539671753022486885
+      BlackGradient_0: -5668205078480983056
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

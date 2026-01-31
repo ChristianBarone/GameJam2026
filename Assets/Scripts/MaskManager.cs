@@ -5,6 +5,8 @@ public class MaskManager : MonoBehaviour
 {
     public static MaskManager instance;
 
+    public SpriteRenderer grid;
+
     public bool rMaskOn;
     public bool gMaskOn;
     public bool bMaskOn;
@@ -70,7 +72,7 @@ public class MaskManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha2) && !gMaskCharging) WearMask(ref gMaskOn); else TakeOffMask(ref gMaskOn);
         if (Input.GetKey(KeyCode.Alpha3) && !bMaskCharging) WearMask(ref bMaskOn); else TakeOffMask(ref bMaskOn);
 
-        Color32 bgColor = new Color32(0, 0, 0, 255);
+        Color32 bgColor = new Color32(29, 29, 29, 255);
 
         if (rMaskOn)
         {
@@ -140,7 +142,8 @@ public class MaskManager : MonoBehaviour
         gSliderBar.color = (!gMaskCharging) ? new Color32(0,255, 0,255) : new Color32(0, 70, 0, 255);
         bSliderBar.color = (!bMaskCharging) ? new Color32(0,0,255,255) : new Color32(0, 0, 70, 255);
 
-        cam.backgroundColor = Color.Lerp(cam.backgroundColor, bgColor, 25.0f * Time.deltaTime);
+        //cam.backgroundColor = Color.Lerp(cam.backgroundColor, bgColor, 25.0f * Time.deltaTime);
+        grid.color = Color.Lerp(grid.color, bgColor, 25.0f * Time.deltaTime);
     }
 
     void TakeOffMask(ref bool maskOn)

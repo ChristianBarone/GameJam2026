@@ -25,7 +25,22 @@ public class RGBElement : MonoBehaviour
 
     void Update()
     {
-        ChangeColor();
+        Color32 c = new Color32(0, 0, 0, 255);
+        Color32 cOutline = sprOutline.color;
+        cOutline.a = 0;
+
+        if (r && !maskManager.rMaskOn) c.r = 255;
+        if (g && !maskManager.gMaskOn) c.g = 255;
+        if (b && !maskManager.bMaskOn) c.b = 255;
+
+        if (c.r == 0 && c.g == 0 && c.b == 0) { c.a = 0; cOutline.a = 255; }
+
+        foreach (SpriteRenderer sprRenderer in sprRendererers)
+        {
+            sprRenderer.color = c;
+        }
+
+        sprOutline.color = cOutline;
 
         if (interactedWithPlayer)
         {
@@ -61,31 +76,18 @@ public class RGBElement : MonoBehaviour
         return points;
     }
 
-    void ChangeColor()
-    {
-        Color32 c = new Color32(0, 0, 0, 255);
-        if (r && !maskManager.rMaskOn) c.r = 255;
-        if (g && !maskManager.gMaskOn) c.g = 255;
-        if (b && !maskManager.bMaskOn) c.b = 255;
-
-        if (c.r == 0 && c.g == 0 && c.b == 0) c.a = 0;
-
-        foreach (SpriteRenderer sprRenderer in sprRendererers)
-        {
-            sprRenderer.color = c;
-        }
-    }
-
     public void SetColor(bool _r, bool _g, bool _b)
     {
         r = _r;
         g = _g;
         b = _b;
 
-        Color32 c = new Color32(0, 0, 0, 255);
-        if (r) c.r = 200;
-        if (g) c.g = 200;
-        if (b) c.b = 200;
+        Color32 c = new Color32(0, 0, 0, 0);
+        if (r) c.r = 150;
+        if (g) c.g = 150;
+        if (b) c.b = 150;
+
+        if (r && g && b) c = new Color32(255, 255, 255, 0);
 
         sprOutline.color = c;
     }
