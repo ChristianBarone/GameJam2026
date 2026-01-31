@@ -77,9 +77,13 @@ public class LevelManager : MonoBehaviour
             currentPoints = 0;
             ++currentLevel;
 
+<<<<<<< HEAD
             pointsToLevelUp += 10;
 
             if (life < 3 && life > 0) ++life;
+=======
+            pointsToLevelUp += 3;
+>>>>>>> refs/remotes/origin/main
         }
     }
 }

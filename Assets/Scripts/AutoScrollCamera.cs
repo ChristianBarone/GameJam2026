@@ -14,7 +14,8 @@ public class AutoScrollCamera : MonoBehaviour
     {
         if (LevelManager.instance != null)
         {
-            float speed = scrollSpeed + LevelManager.instance.currentLevel;
+            float speed = scrollSpeed + 0.4f * LevelManager.instance.currentLevel;
+            if (speed > 10.0f) speed = 10.0f;
             transform.Translate(Vector3.up * speed * Time.deltaTime);
 
         }

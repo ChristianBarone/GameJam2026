@@ -65,7 +65,12 @@ public class Spawner : MonoBehaviour
 
     void recalcSpawnrate() {
         if (LevelManager.instance != null) {
-            spawnRate = Random.Range(1.0f, 2.0f);
+            if (LevelManager.instance.currentLevel <= 4) spawnRate = Random.Range(1.0f, 2.0f);
+            else if (LevelManager.instance.currentLevel <= 8) spawnRate = Random.Range(1.0f, 1.8f);
+            else if (LevelManager.instance.currentLevel <= 12) spawnRate = Random.Range(1.0f, 1.6f);
+            else if (LevelManager.instance.currentLevel <= 16) spawnRate = Random.Range(1.0f, 1.4f);
+            else if (LevelManager.instance.currentLevel >= 20) spawnRate = Random.Range(1.0f, 1.2f);
+
         }
     }
 }
