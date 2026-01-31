@@ -129,7 +129,7 @@ public class LevelManager : MonoBehaviour
         audioManager.PlayGetPointSound();
 
         bool lvlUp = CheckLvlUp();
-        if (lvlUp) { audioManager.PlayLevelUpSound(); CreateScoreTextEffect("+" + addedPoints.ToString() + " (LVL UP!)"); }
+        if (lvlUp) { audioManager.PlayLevelUpSound(); CreateScoreTextEffect("+" + addedPoints.ToString() + " LVL UP!"); }
         else CreateScoreTextEffect("+" + addedPoints.ToString());
     }
 
