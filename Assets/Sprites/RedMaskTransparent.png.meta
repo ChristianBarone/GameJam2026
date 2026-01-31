@@ -182,7 +182,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      RedMaskTransparent_0: -3620058081308502462
+      RedMaskTransparent_1: -3274808581652806224
+      RedMaskTransparent_2: -2727031915567538901
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

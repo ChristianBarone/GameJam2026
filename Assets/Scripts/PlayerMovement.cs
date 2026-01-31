@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (levelManager != null) levelManager.AddPoints(e.PointsToGive());
+            if (levelManager != null) levelManager.AddPoints(e.PointsToGive(), transform.position.y);
         }
     }
 }
