@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     public Transform playerTransform;
 
     public int currentLevel = 0;
-    public int currentPoints = 0;
+    public int currentPointsBeforeNextLevel = 0;
     public int totalPoints = 0;
     public int pointsToLevelUp = 0;
 
@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     float invincibilityFrames;
 
     float timer;
-    float scorePassiveInc = 0.05f;
+    float scorePassiveInc = 0.2f;
 
     public Image lifeImage3;
     public Image lifeImage2;
@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour
         cam = Camera.main;
 
         currentLevel = 0;
-        currentPoints = 0;
+        currentPointsBeforeNextLevel = 0;
         totalPoints = 0;
         pointsToLevelUp = 10;
 
@@ -59,12 +59,13 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
+        RefreshScore();
         timer += Time.deltaTime;
+
 
         if (timer >= scorePassiveInc)
         {
             totalPoints += 3;
-            RefreshScore();
             timer = 0;
         }        
         highscoreText.text = highscore.ToString();
@@ -96,29 +97,33 @@ public class LevelManager : MonoBehaviour
 
         int addedPoints = 100 * points * (currentLevel + 1);
         totalPoints += addedPoints;
+        currentPointsBeforeNextLevel += addedPoints;
 
-        bool leveledUp = CheckLvlUp();
+        bool lvlUp = CheckLvlUp();
+        if (lvlUp) CreateScoreTextEffect("+" + addedPoints.ToString() + " (LVL UP!)");
+        else CreateScoreTextEffect("+" + addedPoints.ToString());
+    }
 
+    void CreateScoreTextEffect(string t)
+    {
         GameObject GO = Instantiate(scoreTextEffect, camController.transform);
         GO.transform.position = playerTransform.position + Vector3.right * 0.5f;
 
         TextMeshPro text = GO.GetComponentInChildren<TextMeshPro>();
-        text.text = "+" + addedPoints.ToString();
-
-        if (leveledUp) text.text += " LVL UP!";
+        text.text = t;
 
         Destroy(GO, 1);
     }
 
     bool CheckLvlUp() 
     {
-        if (currentPoints >= pointsToLevelUp)
+        if (currentPointsBeforeNextLevel >= pointsToLevelUp)
         {
-            currentPoints = 0;
+            currentPointsBeforeNextLevel = 0;
             ++currentLevel;
 
             if (life < 3 && life > 0) ++life;
-            pointsToLevelUp += 3;
+            pointsToLevelUp += 1000;
 
             return true;
         }
