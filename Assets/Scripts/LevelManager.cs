@@ -9,6 +9,10 @@ public class LevelManager : MonoBehaviour
     public AutoScrollCamera camController;
     public Transform playerTransform;
 
+    public Button RestartButton;
+    public Button MainMenuButton;
+    public Image GameOverImage;
+
     public int currentLevel = 0;
     public int currentPointsBeforeNextLevel = 0;
     public int totalPoints = 0;
@@ -41,11 +45,14 @@ public class LevelManager : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
     {
+        RestartButton.gameObject.SetActive(false);
+        MainMenuButton.gameObject.SetActive(false);
+        GameOverImage.gameObject.SetActive(false);
+
         cam = Camera.main;
 
         currentLevel = 0;
@@ -87,7 +94,13 @@ public class LevelManager : MonoBehaviour
         camController.AddScreenShake(0.5f);
 
         --life;
-        if (life <= 0) Debug.Log("Game Over!");
+        if (life <= 0) {
+            Time.timeScale = 0f;
+
+            RestartButton.gameObject.SetActive(true);
+            MainMenuButton.gameObject.SetActive(true);
+            GameOverImage.gameObject.SetActive(true);
+        }
     }
 
     public void AddPoints(int points, Vector2 pos)
