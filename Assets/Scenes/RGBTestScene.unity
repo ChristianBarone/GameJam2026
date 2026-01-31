@@ -5284,8 +5284,11 @@ MonoBehaviour:
   gTimer: 0
   bTimer: 0
   rSlider: {fileID: 1899902980}
+  rSliderBar: {fileID: 655552177}
   gSlider: {fileID: 1315701053}
+  gSliderBar: {fileID: 1222380801}
   bSlider: {fileID: 558849931}
+  bSliderBar: {fileID: 1011569346}
 --- !u!4 &1294389327
 Transform:
   m_ObjectHideFlags: 0
