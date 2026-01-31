@@ -6,13 +6,13 @@ public class RGBElement : MonoBehaviour
     public bool g;
     public bool b;
 
-    SpriteRenderer sprRenderer;
+    SpriteRenderer[] sprRendererers;
 
     MaskManager maskManager;
 
     void Start()
     {
-        sprRenderer = GetComponent<SpriteRenderer>();
+        sprRendererers = GetComponentsInChildren<SpriteRenderer>();
 
         maskManager = MaskManager.instance;
     }
@@ -24,7 +24,7 @@ public class RGBElement : MonoBehaviour
 
     public bool KillsPlayer()
     {
-        return sprRenderer.color.a != 0;
+        return sprRendererers[0].color.a != 0;
     }
 
     void ChangeColor()
@@ -35,13 +35,17 @@ public class RGBElement : MonoBehaviour
         if (b && !maskManager.bMaskOn) c.b = 255;
 
         if (c.r == 0 && c.g == 0 && c.b == 0) c.a = 0;
-        sprRenderer.color = c;
+
+        foreach (SpriteRenderer sprRenderer in sprRendererers)
+        {
+            sprRenderer.color = c;
+        }
     }
 
-    [ContextMenu("Change color")]
-    void ChangeColorEditor()
+    public void SetColor(bool _r, bool _g, bool _b)
     {
-        if (sprRenderer == null) sprRenderer = GetComponent<SpriteRenderer>();
-        ChangeColor();
+        r = _r;
+        g = _g;
+        b = _b;
     }
 }

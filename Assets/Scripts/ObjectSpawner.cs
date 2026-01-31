@@ -43,29 +43,23 @@ public class Spawner : MonoBehaviour
         );
 
 
-        Color c;
-        do
+        RGBElement rgb = obj.GetComponent<RGBElement>();
+        if (rgb != null)
         {
-            c = new Color(
-                Random.Range(0, 2),
-                Random.Range(0, 2),
-                Random.Range(0, 2)
-            );
-        }
-        while (c == Color.black);
+            bool r = false;
+            bool g = false;
+            bool b = false;
 
-        SpriteRenderer sr = obj.GetComponent<SpriteRenderer>();
-        if (sr != null)
-        {
-            sr.color = c;
-        }
+            do
+            {
+                r = Random.value < 0.5f;
+                g = Random.value < 0.5f;
+                b = Random.value < 0.5f;
+            } while (!r && !b && !g);
 
-        SpriteRenderer[] sprs = obj.GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer srchld in sprs)
-        {
-            srchld.color = c;
+            rgb.SetColor(r, g, b);
         }
-
+        
         float scale = 1.0f;
         obj.transform.localScale = new Vector3(scale, scale, scale);
     }
