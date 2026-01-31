@@ -8,8 +8,14 @@ public class AutoScrollCamera : MonoBehaviour
 
     float camShakeTime = 0;
 
+    float deadPlayerTime = 0;
+
+    Camera cam;
+
     void Start()
     {
+        cam = Camera.main;
+
         camShakeTime = 0;
     }
 
@@ -24,10 +30,21 @@ public class AutoScrollCamera : MonoBehaviour
 
         if (camShakeTime > 0)
         {
-            float shakeAmount = Mathf.Min(camShakeTime, 1.0f);
-            camChild.eulerAngles = new Vector3(0, 0, Random.Range(-5.0f, 5.0f) * shakeAmount);
+            float baseRotation = 0;
+            if (Time.timeScale == 0)
+            {
+                deadPlayerTime += Time.unscaledDeltaTime;
+                float t = deadPlayerTime / 5;
+                if (t > 1) t = 1;
 
-            camShakeTime -= Time.deltaTime;
+                baseRotation = Mathf.Lerp(0, 50, t);
+                cam.orthographicSize = Mathf.Lerp(5, 4, t);
+            }
+
+            float shakeAmount = Mathf.Min(camShakeTime, 1.0f);
+            camChild.eulerAngles = new Vector3(0, 0, baseRotation + Random.Range(-5.0f, 5.0f) * shakeAmount);
+
+            camShakeTime -= Time.unscaledDeltaTime;
         }
     }
 

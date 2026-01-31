@@ -34,6 +34,8 @@ public class LevelManager : MonoBehaviour
 
     public GameObject scoreTextEffect;
 
+    public Animator hurtPanelAnim;
+
     Camera cam;
     AudioManager audioManager;
 
@@ -68,10 +70,9 @@ public class LevelManager : MonoBehaviour
         RefreshScore();
         timer += Time.deltaTime;
 
-
         if (timer >= scorePassiveInc)
         {
-            totalPoints += 3;
+            //totalPoints += 3;
             timer = 0;
         }        
         highscoreText.text = highscore.ToString();
@@ -90,14 +91,16 @@ public class LevelManager : MonoBehaviour
 
         invincibilityFrames = 3;
 
-        camController.AddScreenShake(0.5f);
-
         --life;
         if (life <= 0)
         {
             Time.timeScale = 0f;
 
+            camController.AddScreenShake(5.1f);
+
             audioManager.PlayDeathSound();
+
+            hurtPanelAnim.SetTrigger("Dead");
 
             gameOverPanel.SetActive(true);
             gameOverPanel.GetComponent<Animator>().SetTrigger("Effect");
@@ -105,6 +108,10 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            hurtPanelAnim.SetTrigger("Hurt");
+
+            camController.AddScreenShake(0.5f);
+
             audioManager.PlayHurtSound();
             if (life == 1) audioManager.PlayLowLifeAlertSound();
         }

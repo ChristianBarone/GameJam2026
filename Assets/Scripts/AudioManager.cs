@@ -68,11 +68,11 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMaskPutOnSound()
     {
-        audioS.PlayOneShot(putOnMaskSounds[Random.Range(1, putOnMaskSounds.Length)]);
+        audioS.PlayOneShot(putOnMaskSounds[Random.Range(1, putOnMaskSounds.Length)], 0.5f);
     }
 
     public void PlayMaskPutOffSound()
     {
-        audioS.PlayOneShot(putOffMaskSounds[Random.Range(1, putOffMaskSounds.Length)]);
+        audioS.PlayOneShot(putOffMaskSounds[Random.Range(1, putOffMaskSounds.Length)], 0.5f);
     }
 }
