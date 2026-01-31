@@ -5,7 +5,7 @@ using System.Collections;
 public class MainMenu : MonoBehaviour
 {
     public Animator transition;
-    public float transitionTime = 1.0f;
+    public float transitionTime = 0.5f;
 
     public void EmpezarJuego()
     {
