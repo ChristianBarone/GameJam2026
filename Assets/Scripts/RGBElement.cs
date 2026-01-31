@@ -13,15 +13,26 @@ public class RGBElement : MonoBehaviour
 
     bool interactedWithPlayer;
 
+    float scale;
+
     void Start()
     {
         maskManager = MaskManager.instance;
         interactedWithPlayer = false;
+
+        scale = transform.localScale.x;
     }
 
     void Update()
     {
         ChangeColor();
+
+        if (interactedWithPlayer)
+        {
+            scale -= Time.deltaTime;
+            if (scale < 0) scale = 0;
+            transform.localScale = Vector3.one * scale;
+        }
     }
 
     public bool KillsPlayer()
