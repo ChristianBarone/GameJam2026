@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MaskManager : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class MaskManager : MonoBehaviour
     public float rTimer;
     public float gTimer;
     public float bTimer;
+
+    public Slider rSlider;
+    public Slider gSlider;
+    public Slider bSlider;
 
     const float MASK_TIME = 5.0f;
 
@@ -50,7 +55,6 @@ public class MaskManager : MonoBehaviour
         {
             bgColor.r = 255;
             rTimer -= Time.deltaTime;
-            // BAR UPDATE
             if (rTimer <= 0) TakeOffMask(ref rMaskOn);
         }
         else { rTimer = Mathf.Min(rTimer + Time.deltaTime, MASK_TIME); }
@@ -59,7 +63,6 @@ public class MaskManager : MonoBehaviour
         {
             bgColor.g = 255;
             gTimer -= Time.deltaTime;
-            // BAR UPDATE
             if (gTimer <= 0) TakeOffMask(ref gMaskOn);
         }
         else { gTimer = Mathf.Min(gTimer + Time.deltaTime, MASK_TIME); }
@@ -68,10 +71,13 @@ public class MaskManager : MonoBehaviour
         {
             bgColor.b = 255;
             bTimer -= Time.deltaTime;
-            // BAR UPDATE
             if (bTimer <= 0) TakeOffMask(ref bMaskOn);
         }
         else { bTimer = Mathf.Min(bTimer + Time.deltaTime, MASK_TIME); }
+
+        rSlider.value = (rTimer / MASK_TIME);
+        gSlider.value = (gTimer / MASK_TIME);
+        bSlider.value = (bTimer / MASK_TIME);
 
         cam.backgroundColor = Color.Lerp(cam.backgroundColor, bgColor, 25.0f * Time.deltaTime);
     }
