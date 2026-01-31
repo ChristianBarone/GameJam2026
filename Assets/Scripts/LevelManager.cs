@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour
             currentPoints = 0;
             ++currentLevel;
 
-            pointsToLevelUp += 10;
+            pointsToLevelUp += 3;
         }
     }
 }
