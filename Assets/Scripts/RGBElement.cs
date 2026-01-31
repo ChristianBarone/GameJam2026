@@ -48,9 +48,9 @@ public class RGBElement : MonoBehaviour
         b = _b;
 
         Color32 c = new Color32(0, 0, 0, 255);
-        if (r) c.r = 255;
-        if (g) c.g = 255;
-        if (b) c.b = 255;
+        if (r) c.r = 200;
+        if (g) c.g = 200;
+        if (b) c.b = 200;
 
         sprOutline.color = c;
     }
