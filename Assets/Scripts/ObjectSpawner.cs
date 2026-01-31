@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
         {
             Spawn();
             recalcSpawnrate();
-            timer = 0;
+            timer = 0f;
         }
     }
 

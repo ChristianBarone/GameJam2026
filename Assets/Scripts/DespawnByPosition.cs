@@ -15,7 +15,6 @@ public class DespawnByPosition : MonoBehaviour
         if (transform.position.y < bottomLimit)
         {
             Destroy(gameObject);
-            Debug.Log("Despawn");
         }
 
     }
