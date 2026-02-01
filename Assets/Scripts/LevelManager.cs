@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     public int totalPoints = 0;
     public int pointsToLevelUp = 0;
 
-    public int highscore = 500000;
+    public int highscore = 250000;
 
     public int life;
     float invincibilityFrames;
@@ -71,6 +71,8 @@ public class LevelManager : MonoBehaviour
         currentPointsBeforeNextLevel = 0;
         totalPoints = 0;
         pointsToLevelUp = 2500;
+
+        highscore = PlayerPrefs.GetInt("Record", 250000);
 
         combo = 0;
 
@@ -131,7 +133,11 @@ public class LevelManager : MonoBehaviour
             gameOverPanel.GetComponent<Animator>().SetTrigger("Effect");
             gameOverPanel.GetComponent<Animator>().SetBool("Record", totalPoints > highscore);
 
-            if (totalPoints > highscore) audioManager.PlayDeathSoundYesRecord();
+            if (totalPoints > highscore)
+            {
+                audioManager.PlayDeathSoundYesRecord();
+                PlayerPrefs.SetInt("Record", totalPoints);
+            }
             else audioManager.PlayDeathSoundNoRecord();
 
             EndScreenScore.text = totalPoints.ToString();
