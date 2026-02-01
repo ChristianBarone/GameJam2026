@@ -30,9 +30,7 @@ public class LevelManager : MonoBehaviour
     float timer;
     float scorePassiveInc = 0.2f;
 
-    public Image lifeImage3;
-    public Image lifeImage2;
-    public Image lifeImage1;
+    public Animator healthPanelAnim;
 
     public TextMeshProUGUI highscoreText;
     public TextMeshProUGUI scoreText;
@@ -103,10 +101,6 @@ public class LevelManager : MonoBehaviour
 
         if (invincibilityFrames < 0) invincibilityFrames -= Time.deltaTime;
         else invincibilityFrames = 0;
-
-        lifeImage1.color = (life >= 1) ? Color.magenta : Color.gray;
-        lifeImage2.color = (life >= 2) ? Color.magenta : Color.gray;
-        lifeImage3.color = (life >= 3) ? Color.magenta : Color.gray;
     }
 
     public void TakeDamage()
@@ -116,6 +110,8 @@ public class LevelManager : MonoBehaviour
         invincibilityFrames = 3;
 
         EndCombo();
+
+        healthPanelAnim.SetTrigger("Hurt");
 
         --life;
         if (life <= 0)
@@ -203,6 +199,7 @@ public class LevelManager : MonoBehaviour
             currentPointsBeforeNextLevel = 0;
             ++currentLevel;
 
+            healthPanelAnim.SetTrigger("Recover");
             if (life < 3 && life > 0) ++life;
             pointsToLevelUp += 5500;
 
