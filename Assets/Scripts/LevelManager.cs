@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class LevelManager : MonoBehaviour
 {
@@ -39,9 +41,14 @@ public class LevelManager : MonoBehaviour
 
     public Animator hurtPanelAnim;
     public Animator gameplayPanelAnim;
+    public Animator transitionAnim;
 
     Camera cam;
     AudioManager audioManager;
+
+    bool didGameOver;
+
+    bool loadingScene;
 
     void Awake()
     {
@@ -67,6 +74,9 @@ public class LevelManager : MonoBehaviour
 
         combo = 0;
 
+        didGameOver = false;
+        loadingScene = false;
+
         life = 3;
         invincibilityFrames = 0;
     }
@@ -75,6 +85,12 @@ public class LevelManager : MonoBehaviour
     {
         RefreshScore();
         timer += Time.deltaTime;
+
+        if (didGameOver)
+        {
+            if (Input.GetKeyDown(KeyCode.R)) RestartGame();
+            if (Input.GetKeyDown(KeyCode.M)) ReturnToMainMenu();
+        }
 
         if (timer >= scorePassiveInc)
         {
@@ -102,6 +118,8 @@ public class LevelManager : MonoBehaviour
         --life;
         if (life <= 0)
         {
+            didGameOver = true;
+
             Time.timeScale = 0f;
 
             camController.AddScreenShake(5.1f);
@@ -212,5 +230,29 @@ public class LevelManager : MonoBehaviour
         else if (r && g && b) return currentLevel >= 10; // WHITE => Level 10
 
         return false;
+    }
+
+    public void RestartGame()
+    {
+        if (loadingScene) return;
+        loadingScene = true;
+
+        StartCoroutine(LoadScene(SceneManager.GetActiveScene().name));
+    }
+
+    public void ReturnToMainMenu()
+    {
+        if (loadingScene) return;
+        loadingScene = true;
+
+        StartCoroutine(LoadScene("MainMenu"));
+    }
+
+    IEnumerator LoadScene(string level)
+    {
+        transitionAnim.SetTrigger("Start");
+        yield return new WaitForSecondsRealtime(4.5f);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(level);
     }
 }

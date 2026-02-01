@@ -4027,9 +4027,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1294389329}
-        m_TargetAssemblyTypeName: ReturnMainMenu, Assembly-CSharp
-        m_MethodName: AcabarJuego
+      - m_Target: {fileID: 1294389328}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: ReturnToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4077,6 +4077,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609813020}
   m_CullTransparentMesh: 1
+--- !u!95 &648742423 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4340576842341029216, guid: fa3a3faa6c547eb44a5f2834f845ed10, type: 3}
+  m_PrefabInstance: {fileID: 200867846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &655552175
 GameObject:
   m_ObjectHideFlags: 0
@@ -6168,9 +6173,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1294389330}
-        m_TargetAssemblyTypeName: RestartGame, Assembly-CSharp
-        m_MethodName: ReiniciarJuego
+      - m_Target: {fileID: 1294389328}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6776,8 +6781,6 @@ GameObject:
   - component: {fileID: 1294389327}
   - component: {fileID: 1294389328}
   - component: {fileID: 1294389326}
-  - component: {fileID: 1294389329}
-  - component: {fileID: 1294389330}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6864,30 +6867,7 @@ MonoBehaviour:
   scoreTextEffect: {fileID: 517847072390563174, guid: 28026b63c3d031d40a06bfb5fa82cd70, type: 3}
   hurtPanelAnim: {fileID: 778709948}
   gameplayPanelAnim: {fileID: 530871125}
---- !u!114 &1294389329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294389325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73252c10521f11b4ca6701cc95421e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1294389330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294389325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02da2800691b70b4fba5e407ae701799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  transitionAnim: {fileID: 648742423}
 --- !u!1 &1315701051
 GameObject:
   m_ObjectHideFlags: 0
