@@ -66,11 +66,20 @@ public class MaskManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1)) { WearOrTakeOffMask(ref rMaskOn); }
         if (Input.GetKeyDown(KeyCode.Alpha2)) { WearOrTakeOffMask(ref gMaskOn); }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { WearOrTakeOffMask(ref bMaskOn); }
-        */
 
         if (Input.GetKey(KeyCode.Alpha1) && !rMaskCharging) WearMask(ref rMaskOn); else TakeOffMask(ref rMaskOn);
         if (Input.GetKey(KeyCode.Alpha2) && !gMaskCharging) WearMask(ref gMaskOn); else TakeOffMask(ref gMaskOn);
         if (Input.GetKey(KeyCode.Alpha3) && !bMaskCharging) WearMask(ref bMaskOn); else TakeOffMask(ref bMaskOn);
+        */
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) WearMask(ref rMaskOn, ref rMaskCharging, 0, rTimer);
+        if (Input.GetKeyUp(KeyCode.Alpha1)) TakeOffMask(ref rMaskOn, 0);  
+        
+        if (Input.GetKeyDown(KeyCode.Alpha2)) WearMask(ref gMaskOn, ref gMaskCharging, 1, gTimer);
+        if (Input.GetKeyUp(KeyCode.Alpha2)) TakeOffMask(ref gMaskOn, 1);  
+        
+        if (Input.GetKeyDown(KeyCode.Alpha3)) WearMask(ref bMaskOn, ref bMaskCharging, 2, bTimer);
+        if (Input.GetKeyUp(KeyCode.Alpha3)) TakeOffMask(ref bMaskOn, 2);
 
         Color32 bgColor = new Color32(29, 29, 29, 255);
 
@@ -78,7 +87,7 @@ public class MaskManager : MonoBehaviour
         {
             bgColor.r = 255;
             rTimer -= Time.deltaTime;
-            if (rTimer <= 0) { TakeOffMask(ref rMaskOn); rMaskCharging = true; }
+            if (rTimer <= 0) { TakeOffMask(ref rMaskOn, 0); rMaskCharging = true; }
         }
         else
         {
@@ -90,7 +99,7 @@ public class MaskManager : MonoBehaviour
         {
             bgColor.g = 255;
             gTimer -= Time.deltaTime;
-            if (gTimer <= 0) { TakeOffMask(ref gMaskOn); gMaskCharging = true; }
+            if (gTimer <= 0) { TakeOffMask(ref gMaskOn, 1); gMaskCharging = true; }
         }
         else
         {
@@ -102,7 +111,7 @@ public class MaskManager : MonoBehaviour
         {
             bgColor.b = 255;
             bTimer -= Time.deltaTime;
-            if (bTimer <= 0) { TakeOffMask(ref bMaskOn); bMaskCharging = true; }
+            if (bTimer <= 0) { TakeOffMask(ref bMaskOn, 2); bMaskCharging = true; }
         }
         else
         {
@@ -146,7 +155,7 @@ public class MaskManager : MonoBehaviour
         grid.color = Color.Lerp(grid.color, bgColor, 25.0f * Time.deltaTime);
     }
 
-    void TakeOffMask(ref bool maskOn)
+    void TakeOffMask(ref bool maskOn, int maskIndex)
     {
         if (!maskOn) return;
 
@@ -154,11 +163,21 @@ public class MaskManager : MonoBehaviour
         --masksOn;
 
         audioManager.PlayMaskPutOffSound();
+
+        if (maskIndex == 0) audioManager.StopMaskRSound();
+        if (maskIndex == 1) audioManager.StopMaskGSound();
+        if (maskIndex == 2) audioManager.StopMaskBSound();
     }
 
-    void WearMask(ref bool maskOn)
+    void WearMask(ref bool maskOn, ref bool maskCharging, int maskIndex, float timer)
     {
         if (maskOn) return;
+
+        if (maskCharging)
+        {
+            audioManager.PlayErrorSound();
+            return;
+        }
 
         if (masksOn >= 2)
         {
@@ -169,14 +188,9 @@ public class MaskManager : MonoBehaviour
         ++masksOn;
 
         audioManager.PlayMaskPutOnSound();
-    }
 
-    void WearOrTakeOffMask(ref bool maskOn)
-    {
-        // Can always take it off
-        if (maskOn) { TakeOffMask(ref maskOn); return; }
-
-        // Cannot wear mask if 2 are already worn
-        WearMask(ref maskOn);
+        if (maskIndex == 0) audioManager.PlayMaskRSound(3.0f - timer);
+        if (maskIndex == 1) audioManager.PlayMaskGSound(3.0f - timer);
+        if (maskIndex == 2) audioManager.PlayMaskBSound(3.0f - timer);
     }
 }

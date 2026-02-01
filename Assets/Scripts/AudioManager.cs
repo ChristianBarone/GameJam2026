@@ -23,6 +23,9 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource audioS;
     public AudioSource heartbeatAudioS;
+    public AudioSource maskTimerRAudioS;
+    public AudioSource maskTimerGAudioS;
+    public AudioSource maskTimerBAudioS;
 
     bool playingHeartbeat = false;
 
@@ -97,5 +100,38 @@ public class AudioManager : MonoBehaviour
     public void PlayComboEndedSound()
     {
         audioS.PlayOneShot(comboEndSound);
+    }
+
+    public void PlayMaskRSound(float timePos)
+    {
+        maskTimerRAudioS.time = timePos;
+        maskTimerRAudioS.Play();
+    }
+
+    public void StopMaskRSound()
+    {
+        maskTimerRAudioS.Stop();
+    }
+
+    public void PlayMaskGSound(float timePos)
+    {
+        maskTimerGAudioS.time = timePos;
+        maskTimerGAudioS.Play();
+    }
+
+    public void StopMaskGSound()
+    {
+        maskTimerGAudioS.Stop();
+    }
+
+    public void PlayMaskBSound(float timePos)
+    {
+        maskTimerBAudioS.time = timePos;
+        maskTimerBAudioS.Play();
+    }
+
+    public void StopMaskBSound()
+    {
+        maskTimerBAudioS.Stop();
     }
 }
