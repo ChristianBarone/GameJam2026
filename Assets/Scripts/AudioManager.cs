@@ -30,6 +30,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource maskTimerRAudioS;
     public AudioSource maskTimerGAudioS;
     public AudioSource maskTimerBAudioS;
+    public AudioSource menuMusicAudioS;
 
     bool playingHeartbeat = false;
 
@@ -51,7 +52,7 @@ public class AudioManager : MonoBehaviour
         if (playingHeartbeat) heartbeatAudioS.volume = Mathf.Lerp(heartbeatAudioS.volume, 1, Time.deltaTime);
         else heartbeatAudioS.volume = 0;
 
-        if (fadeOutMusic) audioS.volume = Mathf.Lerp(audioS.volume, 0, Time.deltaTime);
+        if (fadeOutMusic && menuMusicAudioS != null) menuMusicAudioS.volume = Mathf.Lerp(menuMusicAudioS.volume, 0, 2f*Time.deltaTime);
     }
 
     public void PlayHurtSound()
