@@ -23,13 +23,16 @@ public class MainMenu : MonoBehaviour
         if (loadingGame) return;
         loadingGame = true;
 
+        AudioManager.instance.FadeOutMusic();
+        AudioManager.instance.PlayTransitionSound();
+
         StartCoroutine(LoadLevel());
     }
 
     IEnumerator LoadLevel()
     {
         transition.SetTrigger("Start");
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene("Game");
     }
 

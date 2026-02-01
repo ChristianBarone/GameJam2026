@@ -9436,6 +9436,7 @@ MonoBehaviour:
   errorSound: {fileID: 8300000, guid: cdf71a4de3ee0514bae9033fb9f650de, type: 3}
   comboEndSound: {fileID: 8300000, guid: d6601915e993d4144b36238ca034b92d, type: 3}
   maskTimeOutSound: {fileID: 8300000, guid: c808ae77f48f9c9458104206a7814d07, type: 3}
+  transitionSound: {fileID: 8300000, guid: fb9456779bb39b947a02c403b0651055, type: 3}
   audioS: {fileID: 1560305834}
   heartbeatAudioS: {fileID: 679392670}
   maskTimerRAudioS: {fileID: 165388425}

@@ -6,14 +6,18 @@ public class WarningScreen : MonoBehaviour
 {
     public Animator anim;
 
+    public AudioSource audioS;
+    public AudioClip transitionSound;
+
     IEnumerator Start()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(.5f);
 
         yield return new WaitUntil(() => Input.anyKeyDown);
 
+        audioS.PlayOneShot(transitionSound);
         anim.SetTrigger("Start");
-        yield return new WaitForSeconds(4.5f);
+        yield return new WaitForSeconds(2.5f);
 
         SceneManager.LoadScene("MainMenu");
     }

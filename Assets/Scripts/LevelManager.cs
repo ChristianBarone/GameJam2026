@@ -210,7 +210,7 @@ public class LevelManager : MonoBehaviour
     
     void RefreshScore() 
     {
-        scoreText.text = totalPoints.ToString() + " (LVL " + currentLevel.ToString() + ")";
+        scoreText.text = totalPoints.ToString() + "\nLVL " + currentLevel.ToString() + "";
     }
 
     public void EndCombo()
@@ -259,9 +259,12 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator LoadScene(string level)
     {
+        audioManager.PlayTransitionSound();
         transitionAnim.SetTrigger("Start");
-        yield return new WaitForSecondsRealtime(4.5f);
+
+        yield return new WaitForSecondsRealtime(2.5f);
         Time.timeScale = 1f;
+
         SceneManager.LoadScene(level);
     }
 }

@@ -23,6 +23,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip maskTimeOutSound;
 
+    public AudioClip transitionSound;
+
     public AudioSource audioS;
     public AudioSource heartbeatAudioS;
     public AudioSource maskTimerRAudioS;
@@ -30,6 +32,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource maskTimerBAudioS;
 
     bool playingHeartbeat = false;
+
+    bool fadeOutMusic = false;
 
     void Awake()
     {
@@ -39,12 +43,15 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         playingHeartbeat = false;
+        fadeOutMusic = false;
     }
 
     void Update()
     {
         if (playingHeartbeat) heartbeatAudioS.volume = Mathf.Lerp(heartbeatAudioS.volume, 1, Time.deltaTime);
         else heartbeatAudioS.volume = 0;
+
+        if (fadeOutMusic) audioS.volume = Mathf.Lerp(audioS.volume, 0, Time.deltaTime);
     }
 
     public void PlayHurtSound()
@@ -140,5 +147,15 @@ public class AudioManager : MonoBehaviour
     public void PlayMaskTimeOutSound()
     {
         audioS.PlayOneShot(maskTimeOutSound);
+    }
+
+    public void FadeOutMusic()
+    {
+        fadeOutMusic = true;
+    }
+
+    public void PlayTransitionSound()
+    {
+        audioS.PlayOneShot(transitionSound);
     }
 }
