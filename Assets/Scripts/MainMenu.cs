@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        int highscore = PlayerPrefs.GetInt("Record", 250000);
+        int highscore = PlayerPrefs.GetInt("Record", 0);
         highscoreText.text = highscore.ToString();
     }
 

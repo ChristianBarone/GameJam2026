@@ -21,6 +21,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip comboEndSound;
 
+    public AudioClip maskTimeOutSound;
+
     public AudioSource audioS;
     public AudioSource heartbeatAudioS;
     public AudioSource maskTimerRAudioS;
@@ -133,5 +135,10 @@ public class AudioManager : MonoBehaviour
     public void StopMaskBSound()
     {
         maskTimerBAudioS.Stop();
+    }
+
+    public void PlayMaskTimeOutSound()
+    {
+        audioS.PlayOneShot(maskTimeOutSound);
     }
 }

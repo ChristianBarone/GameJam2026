@@ -70,7 +70,7 @@ public class LevelManager : MonoBehaviour
         totalPoints = 0;
         pointsToLevelUp = 2500;
 
-        highscore = PlayerPrefs.GetInt("Record", 250000);
+        highscore = PlayerPrefs.GetInt("Record", 0);
 
         combo = 0;
 

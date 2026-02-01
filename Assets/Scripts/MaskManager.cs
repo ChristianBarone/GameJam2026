@@ -87,7 +87,7 @@ public class MaskManager : MonoBehaviour
         {
             bgColor.r = 255;
             rTimer -= Time.deltaTime;
-            if (rTimer <= 0) { TakeOffMask(ref rMaskOn, 0); rMaskCharging = true; }
+            if (rTimer <= 0) { TakeOffMask(ref rMaskOn, 0); rMaskCharging = true; audioManager.PlayMaskTimeOutSound();  }
         }
         else
         {
@@ -99,7 +99,7 @@ public class MaskManager : MonoBehaviour
         {
             bgColor.g = 255;
             gTimer -= Time.deltaTime;
-            if (gTimer <= 0) { TakeOffMask(ref gMaskOn, 1); gMaskCharging = true; }
+            if (gTimer <= 0) { TakeOffMask(ref gMaskOn, 1); gMaskCharging = true; audioManager.PlayMaskTimeOutSound(); }
         }
         else
         {
@@ -111,7 +111,7 @@ public class MaskManager : MonoBehaviour
         {
             bgColor.b = 255;
             bTimer -= Time.deltaTime;
-            if (bTimer <= 0) { TakeOffMask(ref bMaskOn, 2); bMaskCharging = true; }
+            if (bTimer <= 0) { TakeOffMask(ref bMaskOn, 2); bMaskCharging = true; audioManager.PlayMaskTimeOutSound(); }
         }
         else
         {
