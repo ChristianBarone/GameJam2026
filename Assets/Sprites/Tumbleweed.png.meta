@@ -132,7 +132,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tumbleweed_0: -6658293862702925550
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

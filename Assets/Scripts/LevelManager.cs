@@ -78,7 +78,7 @@ public class LevelManager : MonoBehaviour
 
         if (timer >= scorePassiveInc)
         {
-            //totalPoints += 3;
+            totalPoints += 1;
             timer = 0;
         }        
         highscoreText.text = highscore.ToString();

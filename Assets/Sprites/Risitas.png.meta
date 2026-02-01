@@ -132,7 +132,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Risitas_0: -3771779842700009231
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
