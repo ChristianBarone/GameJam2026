@@ -17,6 +17,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] putOnMaskSounds;
     public AudioClip[] putOffMaskSounds;
 
+    public AudioClip errorSound;
+
+    public AudioClip comboEndSound;
+
     public AudioSource audioS;
     public AudioSource heartbeatAudioS;
 
@@ -83,5 +87,15 @@ public class AudioManager : MonoBehaviour
     public void PlayMaskPutOffSound()
     {
         audioS.PlayOneShot(putOffMaskSounds[Random.Range(1, putOffMaskSounds.Length)], 0.5f);
+    }
+
+    public void PlayErrorSound()
+    {
+        audioS.PlayOneShot(errorSound);
+    }
+
+    public void PlayComboEndedSound()
+    {
+        audioS.PlayOneShot(comboEndSound);
     }
 }

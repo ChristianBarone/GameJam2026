@@ -54,7 +54,7 @@ public class Spawner : MonoBehaviour
                 r = Random.value < 0.5f;
                 g = Random.value < 0.5f;
                 b = Random.value < 0.5f;
-            } while (!r && !b && !g);
+            } while (!LevelManager.instance.GetIsRGBValid(r,g,b));
 
             rgb.SetColor(r, g, b);
         }

@@ -160,7 +160,11 @@ public class MaskManager : MonoBehaviour
     {
         if (maskOn) return;
 
-        if (masksOn >= 2) return;
+        if (masksOn >= 2)
+        {
+            audioManager.PlayErrorSound();
+            return;
+        }
         maskOn = true;
         ++masksOn;
 

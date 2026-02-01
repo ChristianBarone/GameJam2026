@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
     public int totalPoints = 0;
     public int pointsToLevelUp = 0;
 
-    public int highscore = 100;
+    public int highscore = 500000;
 
     public int life;
     float invincibilityFrames;
@@ -63,7 +63,7 @@ public class LevelManager : MonoBehaviour
         currentLevel = 0;
         currentPointsBeforeNextLevel = 0;
         totalPoints = 0;
-        pointsToLevelUp = 10;
+        pointsToLevelUp = 2500;
 
         combo = 0;
 
@@ -136,6 +136,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log(y);
 
         ++combo;
+        if (combo > 5) combo = 5;
 
         int addedPointsBeforeCombo = 100 * points * (currentLevel + 1);
         int addedPoints = addedPointsBeforeCombo * combo;
@@ -168,7 +169,7 @@ public class LevelManager : MonoBehaviour
             ++currentLevel;
 
             if (life < 3 && life > 0) ++life;
-            pointsToLevelUp += 1000;
+            pointsToLevelUp += 5500;
 
             return true;
         }
@@ -183,7 +184,29 @@ public class LevelManager : MonoBehaviour
 
     public void EndCombo()
     {
-        if (combo > 0) CreateScoreTextEffect("<color=red>Combo ended</color>");
+        if (combo > 0)
+        {
+            audioManager.PlayComboEndedSound();
+            CreateScoreTextEffect("<color=red>Combo ended</color>");
+        }
         combo = 0;
+    }
+
+    public bool GetIsRGBValid(bool r, bool g, bool b)
+    {
+        if (!r && !g && !b) return false;
+        if (currentLevel >= 10) return true;
+
+        if (r && !g && !b) return true; // RED => Always
+        else if (!r && g && !b) return currentLevel >= 1; // GREEN => Level 1
+        else if (!r && !g && b) return currentLevel >= 2; // BLUE => Level 2
+
+        else if (r && g && !b) return currentLevel >= 5; // YELLOW => Level 5
+        else if (!r && g && b) return currentLevel >= 6; // CYAN => Level 6
+        else if (r && g && !b) return currentLevel >= 7; // MAGENTA => Level 7
+
+        else if (r && g && b) return currentLevel >= 10; // WHITE => Level 10
+
+        return false;
     }
 }

@@ -5984,7 +5984,7 @@ MonoBehaviour:
   currentPointsBeforeNextLevel: 0
   totalPoints: 0
   pointsToLevelUp: 0
-  highscore: 100
+  highscore: 500000
   life: 0
   lifeImage3: {fileID: 758684111}
   lifeImage2: {fileID: 1647650057}
@@ -7691,6 +7691,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1ab4fbc8c52e1324eb597fcbd674b302, type: 3}
   - {fileID: 8300000, guid: 248b475154cf45b41b8d52fc1bc1bc55, type: 3}
   - {fileID: 8300000, guid: dd50f58f2fe69d84dbcd560e22ff593f, type: 3}
+  errorSound: {fileID: 8300000, guid: cdf71a4de3ee0514bae9033fb9f650de, type: 3}
+  comboEndSound: {fileID: 8300000, guid: d6601915e993d4144b36238ca034b92d, type: 3}
   audioS: {fileID: 1560305834}
   heartbeatAudioS: {fileID: 1560305837}
 --- !u!82 &1560305837
