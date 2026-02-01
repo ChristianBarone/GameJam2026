@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
     void Spawn()
     {
         Vector3 spawnPos = cam.ViewportToWorldPoint(
-            new Vector3(((float)Random.Range(0, 20)*0.02f) + 0.3f, 1.1f, 0)
+            new Vector3(((float)Random.Range(3, 17)*0.02f) + 0.3f, 1.1f, 0)
         );
 
         spawnPos.z = 0;
