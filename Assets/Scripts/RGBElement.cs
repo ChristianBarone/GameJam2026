@@ -80,6 +80,8 @@ public class RGBElement : MonoBehaviour
 
     public void InteractWithPlayer()
     {
+        canStopComboWhenDespawned = false;
+
         interactedWithPlayer = true;
     }
 
@@ -90,8 +92,6 @@ public class RGBElement : MonoBehaviour
         if (r) ++points;
         if (g) ++points;
         if (b) ++points;
-
-        canStopComboWhenDespawned = false;
 
         return points;
     }
