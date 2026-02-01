@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -41,3 +41,29 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 3178306833
+    locked: 0
+  - name: Fire
+    uniqueID: 2556560571
+    locked: 0
+  - name: Blocks
+    uniqueID: 2110800189
+    locked: 0
+  - name: Gradient
+    uniqueID: 873049765
+    locked: 0
+  - name: Grid
+    uniqueID: 3033320487
+    locked: 0
+  - name: Player
+    uniqueID: 3541146591
+    locked: 0
+  - name: Border
+    uniqueID: 3358928883
+    locked: 0
+  - name: Transition
+    uniqueID: 2839093177
+    locked: 0
+  m_RenderingLayers:
+  - Default
