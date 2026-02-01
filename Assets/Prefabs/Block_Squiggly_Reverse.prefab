@@ -99,7 +99,6 @@ GameObject:
   - component: {fileID: 6475640586890452073}
   - component: {fileID: 6952639919654361199}
   - component: {fileID: 4540651060348827593}
-  - component: {fileID: 8685148613757015674}
   m_Layer: 0
   m_Name: Block_Squiggly_Reverse
   m_TagString: Untagged
@@ -240,18 +239,6 @@ MonoBehaviour:
   - {fileID: 5465595212121019518}
   - {fileID: 4021564983461936102}
   sprOutline: {fileID: 7200578434964968536}
---- !u!114 &8685148613757015674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3761471365130389464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dbb9fa8711e90c4297958502287c4db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4662068864571780310
 GameObject:
   m_ObjectHideFlags: 0

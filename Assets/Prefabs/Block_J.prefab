@@ -273,7 +273,6 @@ GameObject:
   - component: {fileID: 4519414696838246894}
   - component: {fileID: 7629174032957309585}
   - component: {fileID: 6607972832649826462}
-  - component: {fileID: 3758012646648553992}
   m_Layer: 0
   m_Name: Block_J
   m_TagString: Untagged
@@ -414,18 +413,6 @@ MonoBehaviour:
   - {fileID: 5532700520522278951}
   - {fileID: 4082356485193604852}
   sprOutline: {fileID: 6394838691025712313}
---- !u!114 &3758012646648553992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2130881452423621626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dbb9fa8711e90c4297958502287c4db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3184430908175545106
 GameObject:
   m_ObjectHideFlags: 0

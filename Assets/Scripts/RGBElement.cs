@@ -12,19 +12,37 @@ public class RGBElement : MonoBehaviour
     MaskManager maskManager;
 
     bool interactedWithPlayer;
+    bool canStopComboWhenDespawned;
 
     float scale;
 
+    Camera cam;
+
     void Start()
     {
+        cam = Camera.main;
+
         maskManager = MaskManager.instance;
         interactedWithPlayer = false;
+
+        canStopComboWhenDespawned = true;
 
         scale = transform.localScale.x;
     }
 
     void Update()
     {
+        float bottomLimit = cam.ViewportToWorldPoint(new Vector3(0, -0.1f, 0)).y;
+        if (transform.position.y < bottomLimit)
+        {
+            Destroy(gameObject);
+
+            if (canStopComboWhenDespawned)
+            {
+                if (!(r && g && b)) LevelManager.instance.EndCombo();
+            }
+        }
+
         Color32 c = new Color32(0, 0, 0, 255);
         Color32 cOutline = sprOutline.color;
         cOutline.a = 0;
@@ -73,6 +91,8 @@ public class RGBElement : MonoBehaviour
         if (g) ++points;
         if (b) ++points;
 
+        canStopComboWhenDespawned = false;
+
         return points;
     }
 
@@ -87,7 +107,10 @@ public class RGBElement : MonoBehaviour
         if (g) c.g = 150;
         if (b) c.b = 150;
 
-        if (r && g && b) c = new Color32(255, 255, 255, 0);
+        if (r && g && b)
+        {
+            c = new Color32(255, 255, 255, 0);
+        }
 
         sprOutline.color = c;
     }

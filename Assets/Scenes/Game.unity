@@ -5904,8 +5904,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1294389327}
-  - component: {fileID: 1294389326}
   - component: {fileID: 1294389328}
+  - component: {fileID: 1294389326}
   - component: {fileID: 1294389329}
   - component: {fileID: 1294389330}
   m_Layer: 0
@@ -7677,11 +7677,11 @@ MonoBehaviour:
   deathSoundNoRecord: {fileID: 8300000, guid: 545af700b1bd9ab45a440e50711686e9, type: 3}
   lowLifeAlertSound: {fileID: 8300000, guid: 1e04e3a5ed1a7664a96b6cb0b448c346, type: 3}
   pointSounds:
+  - {fileID: 8300000, guid: bee1c792bbd56c3448e4681aac5e1a12, type: 3}
+  - {fileID: 8300000, guid: ea1d7c43f42022b45b2cb90e81966fd7, type: 3}
   - {fileID: 8300000, guid: 11204953c00cb2a41a5294ab619acb4e, type: 3}
   - {fileID: 8300000, guid: 8c3becbebd08dbd45bb81ea11762e54c, type: 3}
   - {fileID: 8300000, guid: 1d48a4dc28551764aad096dcb56389c2, type: 3}
-  - {fileID: 8300000, guid: ea1d7c43f42022b45b2cb90e81966fd7, type: 3}
-  - {fileID: 8300000, guid: bee1c792bbd56c3448e4681aac5e1a12, type: 3}
   levelUpSound: {fileID: 8300000, guid: c4ec4c9b8d5e2d741b3b84db4688403c, type: 3}
   putOnMaskSounds:
   - {fileID: 8300000, guid: ee58ef469d835874dbd5162525dce6ab, type: 3}

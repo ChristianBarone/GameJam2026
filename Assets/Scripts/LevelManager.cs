@@ -23,6 +23,8 @@ public class LevelManager : MonoBehaviour
     public int life;
     float invincibilityFrames;
 
+    int combo;
+
     float timer;
     float scorePassiveInc = 0.2f;
 
@@ -63,6 +65,8 @@ public class LevelManager : MonoBehaviour
         totalPoints = 0;
         pointsToLevelUp = 10;
 
+        combo = 0;
+
         life = 3;
         invincibilityFrames = 0;
     }
@@ -92,6 +96,8 @@ public class LevelManager : MonoBehaviour
         if (invincibilityFrames > 0) return;
 
         invincibilityFrames = 3;
+
+        EndCombo();
 
         --life;
         if (life <= 0)
@@ -129,15 +135,18 @@ public class LevelManager : MonoBehaviour
         float y = cam.WorldToScreenPoint(pos).y;
         Debug.Log(y);
 
-        int addedPoints = 100 * points * (currentLevel + 1);
+        ++combo;
+
+        int addedPointsBeforeCombo = 100 * points * (currentLevel + 1);
+        int addedPoints = addedPointsBeforeCombo * combo;
         totalPoints += addedPoints;
         currentPointsBeforeNextLevel += addedPoints;
 
-        audioManager.PlayGetPointSound();
+        audioManager.PlayGetPointSound(combo);
 
         bool lvlUp = CheckLvlUp();
-        if (lvlUp) { audioManager.PlayLevelUpSound(); CreateScoreTextEffect("+" + addedPoints.ToString() + " LVL UP!"); }
-        else CreateScoreTextEffect("+" + addedPoints.ToString());
+        if (lvlUp) { audioManager.PlayLevelUpSound(); CreateScoreTextEffect("+" + addedPointsBeforeCombo.ToString() + " <color=yellow>x" + combo.ToString() + "</color> <color=blue>LVL UP!</color>"); }
+        else CreateScoreTextEffect("+" + addedPointsBeforeCombo.ToString() + " <color=yellow>x" + combo.ToString() + "</color>");
     }
 
     void CreateScoreTextEffect(string t)
@@ -148,7 +157,7 @@ public class LevelManager : MonoBehaviour
         TextMeshPro text = GO.GetComponentInChildren<TextMeshPro>();
         text.text = t;
 
-        Destroy(GO, 1);
+        Destroy(GO, 2);
     }
 
     bool CheckLvlUp() 
@@ -170,5 +179,11 @@ public class LevelManager : MonoBehaviour
     void RefreshScore() 
     {
         scoreText.text = totalPoints.ToString() + " (LVL " + currentLevel.ToString() + ")";
+    }
+
+    public void EndCombo()
+    {
+        if (combo > 0) CreateScoreTextEffect("<color=red>Combo ended</color>");
+        combo = 0;
     }
 }

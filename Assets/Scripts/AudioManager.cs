@@ -63,9 +63,10 @@ public class AudioManager : MonoBehaviour
         audioS.PlayOneShot(lowLifeAlertSound);
     }
 
-    public void PlayGetPointSound()
+    public void PlayGetPointSound(int combo)
     {
-        audioS.PlayOneShot(pointSounds[Random.Range(1, pointSounds.Length)]);
+        int audioIndex = Mathf.Min(combo - 1, pointSounds.Length - 1);
+        audioS.PlayOneShot(pointSounds[audioIndex]);
     }
 
     public void PlayLevelUpSound()

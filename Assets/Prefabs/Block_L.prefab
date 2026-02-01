@@ -99,7 +99,6 @@ GameObject:
   - component: {fileID: 2111877290041025079}
   - component: {fileID: 3830723064835596772}
   - component: {fileID: 3667857094184814953}
-  - component: {fileID: 8011066815080738322}
   m_Layer: 0
   m_Name: Block_L
   m_TagString: Untagged
@@ -240,18 +239,6 @@ MonoBehaviour:
   - {fileID: 1584010040214280204}
   - {fileID: 7823720256455763393}
   sprOutline: {fileID: 2710397702930513802}
---- !u!114 &8011066815080738322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6488327102130438515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dbb9fa8711e90c4297958502287c4db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7847673583994672766
 GameObject:
   m_ObjectHideFlags: 0
