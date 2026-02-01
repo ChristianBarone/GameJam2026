@@ -37,7 +37,7 @@ public class MaskManager : MonoBehaviour
     Camera cam;
     AudioManager audioManager;
 
-    int masksOn;
+    public int masksOn;
 
     void Awake()
     {
