@@ -86,6 +86,8 @@ public class LevelManager : MonoBehaviour
         RefreshScore();
         timer += Time.deltaTime;
 
+        healthPanelAnim.SetInteger("Life", life);
+
         if (didGameOver)
         {
             if (Input.GetKeyDown(KeyCode.R)) RestartGame();
@@ -110,8 +112,6 @@ public class LevelManager : MonoBehaviour
         invincibilityFrames = 3;
 
         EndCombo();
-
-        healthPanelAnim.SetTrigger("Hurt");
 
         --life;
         if (life <= 0)
@@ -199,7 +199,6 @@ public class LevelManager : MonoBehaviour
             currentPointsBeforeNextLevel = 0;
             ++currentLevel;
 
-            healthPanelAnim.SetTrigger("Recover");
             if (life < 3 && life > 0) ++life;
             pointsToLevelUp += 5500;
 
