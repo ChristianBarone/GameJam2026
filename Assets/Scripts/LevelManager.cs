@@ -174,7 +174,7 @@ public class LevelManager : MonoBehaviour
         audioManager.PlayGetPointSound(combo);
 
         bool lvlUp = CheckLvlUp();
-        if (lvlUp) { audioManager.PlayLevelUpSound(); CreateScoreTextEffect("+<color=" + pointsColor + ">" + addedPointsBeforeCombo.ToString() + "</color><color=yellow> x" + combo.ToString() + "</color> <color=blue>LVL UP!</color>"); }
+        if (lvlUp) { audioManager.PlayLevelUpSound(); CreateScoreTextEffect("+<color=" + pointsColor + ">" + addedPointsBeforeCombo.ToString() + "</color><color=yellow> x" + combo.ToString() + "</color>\n<color=red>\u2665</color> <color=blue>LVL UP</color> <color=red>\u2665</color>"); }
         else CreateScoreTextEffect("+<color=" + pointsColor + ">" + addedPointsBeforeCombo.ToString() + " </color><color=yellow>x" + combo.ToString() + "</color>");
     }
 
