@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         e.InteractWithPlayer();
 
         LevelManager levelManager = LevelManager.instance;
+        MaskManager maskManager = MaskManager.instance;
 
         if (e.KillsPlayer())
         {
@@ -41,7 +42,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (levelManager != null) levelManager.AddPoints(e.PointsToGive(), transform.position);
+            bool penalty = false;
+            if (levelManager != null) {
+                if (maskManager.masksOn >= 2) {
+                    int colorsActive = (e.r ? 1 : 0) + (e.g ? 1 : 0) + (e.b ? 1 : 0);
+                    if (colorsActive == 1) penalty = true;
+                }
+                levelManager.AddPoints(e.PointsToGive(), transform.position, penalty);
+            }
         }
     }
 }

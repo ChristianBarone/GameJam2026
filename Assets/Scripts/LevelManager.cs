@@ -154,7 +154,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void AddPoints(int points, Vector2 pos)
+    public void AddPoints(int points, Vector2 pos, bool penaltyForDoubleMask)
     {
         float y = cam.WorldToViewportPoint(pos).y;
         int verticalMultiplier = Mathf.RoundToInt(y + 1);
@@ -167,7 +167,14 @@ public class LevelManager : MonoBehaviour
         if (combo > 5) combo = 5;
 
         int addedPointsBeforeCombo = 100 * points * verticalMultiplier * (currentLevel + 1);
+
+        if (penaltyForDoubleMask) {
+            addedPointsBeforeCombo /= 2;
+            pointsColor = "red";
+        }
+
         int addedPoints = addedPointsBeforeCombo * combo;
+
         totalPoints += addedPoints;
         currentPointsBeforeNextLevel += addedPoints;
 
