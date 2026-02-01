@@ -32,4 +32,9 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene("Game");
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
