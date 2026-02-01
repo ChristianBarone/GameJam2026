@@ -7,8 +7,13 @@ public class MainMenu : MonoBehaviour
     public Animator transition;
     public float transitionTime = 0.5f;
 
+    bool loadingGame = false;
+
     public void EmpezarJuego()
     {
+        if (loadingGame) return;
+        loadingGame = true;
+
         StartCoroutine(LoadLevel());
     }
 

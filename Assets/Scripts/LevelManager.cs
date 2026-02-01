@@ -132,13 +132,17 @@ public class LevelManager : MonoBehaviour
 
     public void AddPoints(int points, Vector2 pos)
     {
-        float y = cam.WorldToScreenPoint(pos).y;
-        Debug.Log(y);
+        float y = cam.WorldToViewportPoint(pos).y;
+        int verticalMultiplier = Mathf.RoundToInt(y + 1);
+        verticalMultiplier = Mathf.Clamp(verticalMultiplier, 1, 2);
+
+        string pointsColor = "white";
+        if (verticalMultiplier == 2) pointsColor = "green";
 
         ++combo;
         if (combo > 5) combo = 5;
 
-        int addedPointsBeforeCombo = 100 * points * (currentLevel + 1);
+        int addedPointsBeforeCombo = 100 * points * verticalMultiplier * (currentLevel + 1);
         int addedPoints = addedPointsBeforeCombo * combo;
         totalPoints += addedPoints;
         currentPointsBeforeNextLevel += addedPoints;
@@ -146,8 +150,8 @@ public class LevelManager : MonoBehaviour
         audioManager.PlayGetPointSound(combo);
 
         bool lvlUp = CheckLvlUp();
-        if (lvlUp) { audioManager.PlayLevelUpSound(); CreateScoreTextEffect("+" + addedPointsBeforeCombo.ToString() + " <color=yellow>x" + combo.ToString() + "</color> <color=blue>LVL UP!</color>"); }
-        else CreateScoreTextEffect("+" + addedPointsBeforeCombo.ToString() + " <color=yellow>x" + combo.ToString() + "</color>");
+        if (lvlUp) { audioManager.PlayLevelUpSound(); CreateScoreTextEffect("+<color=" + pointsColor + ">" + addedPointsBeforeCombo.ToString() + "</color><color=yellow> x" + combo.ToString() + "</color> <color=blue>LVL UP!</color>"); }
+        else CreateScoreTextEffect("+<color=" + pointsColor + ">" + addedPointsBeforeCombo.ToString() + " </color><color=yellow>x" + combo.ToString() + "</color>");
     }
 
     void CreateScoreTextEffect(string t)
