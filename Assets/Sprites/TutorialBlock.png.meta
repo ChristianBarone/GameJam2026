@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ebc6fbc06d6882d47a6e0969c6ce8c1c
+guid: b085757a00ca1ab439e850ff4562bc71
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8085826056776916314
-    second: Captura de pantalla 2026-01-31 201056_0
+      213: -4500797467420652184
+    second: TutorialBlock_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Captura de pantalla 2026-01-31 201056_0
+      name: TutorialBlock_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 718
-        height: 407
+        width: 71
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a5d19c545ff963070800000000000000
-      internalID: 8085826056776916314
+      spriteID: 86d0a64bc84f981c0800000000000000
+      internalID: -4500797467420652184
       vertices: []
       indices: 
       edges: []
@@ -133,7 +133,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Captura de pantalla 2026-01-31 201056_0: 8085826056776916314
+      TutorialBlock_0: -4500797467420652184
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -38,6 +38,9 @@ public class MainMenu : MonoBehaviour
 
     public void Quit()
     {
+        if (loadingGame) return;
+        loadingGame = true;
+
         Application.Quit();
     }
 }
